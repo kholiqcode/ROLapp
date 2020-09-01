@@ -68,3 +68,14 @@ function renewToken($uid)
 
     return false;
 }
+
+function is_logged()
+{
+    $CI = &get_instance();
+
+    if ($CI->session->userdata('is_login') == false && $CI->session->userdata('nama_admin') == "") {
+        return false;
+    } else {
+        return true;
+    }
+}

@@ -36,8 +36,6 @@ class Rating_model extends CI_Model
 
         $this->db->where('id', $tid)->update('tutor', $dataTutor);
 
-        if ($this->db->affected_rows() == 0) return false;
-
         return $query;
     }
 

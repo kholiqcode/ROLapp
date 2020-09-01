@@ -24,7 +24,7 @@ class Tutor_model extends CI_Model
         return $this->db->insert_id();
     }
 
-    public function putTutor($input)
+    public function putTutor($input = null)
     {
         $uid = $this->token->decrypt($input['apikey']);
 
