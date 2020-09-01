@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginTop="20dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="3dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginStart="50dp"
+                android:orientation="vertical"
+                android:layout_marginLeft="50dp">
+
+                <TextView
+                    android:id="@+id/tvMenuTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/opensanssemibold"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16sp"
+                    tools:text="RENANG by RANI AYU" />
+
+                <RatingBar
+                    android:id="@+id/rating"
+                    style="?android:attr/ratingBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:clickable="false"
+                    android:isIndicator="true"
+                    android:numStars="5"
+                    android:stepSize="0.1"
+                    android:theme="@style/RatingBar" />
+
+<!--                <TextView-->
+<!--                    android:id="@+id/tvMenuItems"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:fontFamily="@font/opensansregular"-->
+<!--                    android:text="44 Items"-->
+<!--                    android:textColor="@color/colorBlack"-->
+<!--                    android:textSize="11dp"-->
+<!--                    tools:text="44 tutor tersedia" />-->
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="100dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/ivMenu"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:layout_toLeftOf="@+id/tvMenuTitle"
+            android:background="@drawable/shape_rounded_elevation"
+            android:elevation="5dp"
+            android:src="@drawable/image_user"
+            android:visibility="visible"
+            app:civ_border_color="@color/colorWhite"
+            app:civ_border_width="4dp"
+            tools:ignore="NotSibling" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="100dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/ivMenuDetail"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_plus"
+            android:visibility="visible"
+            app:civ_border_color="@color/colorWhite"
+            app:civ_border_width="0dp"
+            tools:ignore="NotSibling"
+            android:elevation="3dp"
+            app:civ_circle_background_color="@color/colorBlue"
+            android:layout_alignParentRight="true" />
+    </RelativeLayout>
+
+
+</FrameLayout>
