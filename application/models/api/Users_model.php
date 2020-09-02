@@ -11,9 +11,7 @@ class Users_model extends CI_Model
 	{
 		$uid = $this->token->decrypt($input['apikey']);
 
-		$this->db->where('id', $uid)->get($this->table);
-
-		return $this->db->result_array();
+		return $this->db->select('id,nama,email,jenis_kelamin,telepon,alamat,foto')->where('id', $uid)->get($this->table)->result_array();
 	}
 
 	public function putUsers($input)
