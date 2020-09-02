@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/home"
+        android:title="Home"
+        android:icon="@drawable/ic_home_navigation"/>
+    <item android:id="@+id/tutor"
+        android:title="Tutor"
+        android:icon="@drawable/ic_tutor_navigation"/>
+    <item android:id="@+id/spa"
+        android:title="Spa"
+        android:icon="@drawable/ic_spa_navigation"/>
+    <item android:id="@+id/order"
+        android:title="Pesanan"
+        android:icon="@drawable/ic_order_navigation"/>
+    <item android:id="@+id/profil"
+        android:title="Profil"
+        android:icon="@drawable/ic_person_navigation"/>
+</menu>

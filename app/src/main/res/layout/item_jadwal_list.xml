@@ -36,31 +36,29 @@
                     android:fontFamily="@font/opensanssemibold"
                     android:textColor="@color/colorBlack"
                     android:textSize="16sp"
-                    tools:text="RENANG" />
-
-                <RatingBar
-                    android:id="@+id/rating"
-                    style="?android:attr/ratingBarStyleSmall"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"
-                    android:clickable="false"
-                    android:isIndicator="true"
-                    android:numStars="5"
-                    android:stepSize="0.1"
-                    android:theme="@style/RatingBar" />
+                    tools:text="Rino Ahmad" />
 
                 <TextView
-                    android:id="@+id/tvMenuItems"
+                    android:id="@+id/tvKategori"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/opensansbold"
+                    android:text="Renang"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/tvTanggal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:fontFamily="@font/opensansregular"
-                    android:text="44 Items"
+                    android:text="18 Agustus 2020"
+                    android:layout_marginTop="10dp"
                     android:textColor="@color/colorBlack"
-                    android:textSize="15sp"
-                    tools:text="44 tutor tersedia" />
+                    android:textSize="14dp"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
     </RelativeLayout>

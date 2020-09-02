@@ -35,4 +35,5 @@
     <string name="komentar">Ulasan</string>
     <string name="alamat">Alamat</string>
     <string name="logout">Logout</string>
+    <string name="tutor">Tutor</string>
 </resources>
