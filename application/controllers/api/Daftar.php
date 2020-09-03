@@ -53,7 +53,12 @@ class Daftar extends RestController
             [
                 'field'    => 'telepon',
                 'label'    => 'Nomor HP',
-                'rules'    => 'trim'
+                'rules'    => 'trim|integer|required'
+            ],
+            [
+                'field'    => 'jenis_kelamin',
+                'label'    => 'Jenis Kelamin',
+                'rules'    => 'trim|required'
             ],
             [
                 'field'     => 'email',
@@ -85,6 +90,7 @@ class Daftar extends RestController
         $data        = [
             'nama'        => $input['nama'],
             'email'        => strtolower($input['email']),
+            'jenis_kelamin'        => $input['jenis_kelamin'],
             'password'    => password_hash($input['password'], PASSWORD_BCRYPT),
             'telepon'        => $input['telepon'],
         ];
