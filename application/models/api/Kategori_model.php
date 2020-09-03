@@ -13,7 +13,7 @@ class Kategori_model extends CI_Model
         if (isset($input['kid']) && !empty($input['kid'])) {
             $query    = $this->db->select('kategori.*, COUNT(tutor.id) as total_tutor')->join('tutor', 'tutor.id_kategori = kategori.id', 'left')->where('kategori.id', $input['kid'])->get($this->table)->row_array();
         } else {
-            $query    = $this->db->select('kategori.*, COUNT(tutor.id) as total_tutor')->join('tutor', 'tutor.id_kategori = kategori.id', 'left')->get($this->table)->result_array();
+            $query    = $this->db->select('kategori.*, COUNT(tutor.id) as total_tutor')->join('tutor', 'tutor.id_kategori = kategori.id', 'left')->group_by('kategori.nama')->get($this->table)->result_array();
         }
 
         return $query;
