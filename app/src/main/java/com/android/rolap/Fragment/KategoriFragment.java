@@ -12,6 +12,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -94,12 +96,7 @@ public class KategoriFragment extends Fragment {
                         public void onDetailClick(int position) {
                             Intent intent = new Intent(getActivity(), MenuActivity.class);
                             intent.putExtra("kid", kategoriList.get(position).id);
-                            ActivityOptions options =
-                                    null;
-                            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN) {
-                                options = ActivityOptions.makeCustomAnimation(getActivity(), R.anim.slide_in, R.anim.slide_out);
-                                startActivity(intent, options.toBundle());
-                            }
+                            replaceFragment(new TutorFragment());
                         }
                     });
 
@@ -114,6 +111,13 @@ public class KategoriFragment extends Fragment {
                 t.printStackTrace();
             }
         });
+    }
 
+    public void replaceFragment(@NonNull Fragment fragment) {
+        FragmentManager fm = getFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.replace(R.id.container, fragment, fragment.getClass().getSimpleName());
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft.commit();
     }
 }

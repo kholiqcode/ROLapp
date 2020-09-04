@@ -42,7 +42,7 @@ public class TutorAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
         TutorAdapter.TutorViewHolder holder = (TutorAdapter.TutorViewHolder) viewHolder;
         holder.tvNama.setText(tutorList.get(position).nama);
-        holder.tvTotalTransaksi.setText(tutorList.get(position).total_trx+" Tutor Aktif");
+        holder.tvTotalTransaksi.setText(tutorList.get(position).total_trx+" Total Transaksi");
         if (!tutorList.get(position).rate_avg.equalsIgnoreCase("")) {
             holder.rbTutor.setRating(Float.parseFloat(tutorList.get(position).rate_avg));
         } else {
@@ -54,7 +54,7 @@ public class TutorAdapter extends RecyclerView.Adapter {
                 onDetailClick.onDetailClick(position);
             }
         });
-        if(tutorList.get(position).foto == null){
+        if(tutorList.get(position).foto == ""){
             Glide.with(mContext).load(R.drawable.image_profil).into(holder.civTutor);
         }else{
             Glide.with(mContext).load(Constant.WEBSERVICE_IMAGE+tutorList.get(position).foto).into(holder.civTutor);

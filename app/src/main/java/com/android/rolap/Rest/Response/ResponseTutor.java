@@ -12,6 +12,8 @@ public class ResponseTutor {
         public String id_users;
         public String id_kategori;
         public String nama;
+        public String jenis_kelamin;
+        public String telepon;
         public String alamat;
         public String harga;
         public String total_trx;

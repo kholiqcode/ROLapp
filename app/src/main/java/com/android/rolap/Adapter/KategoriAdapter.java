@@ -49,7 +49,7 @@ public class KategoriAdapter extends RecyclerView.Adapter {
                 onDetailClick.onDetailClick(position);
             }
         });
-        if(kategoriList.get(position).foto == null){
+        if(kategoriList.get(position).foto == ""){
             Glide.with(mContext).load(R.drawable.image_profil).into(holder.civKategori);
         }else{
             Glide.with(mContext).load(Constant.WEBSERVICE_IMAGE+kategoriList.get(position).foto).into(holder.civKategori);

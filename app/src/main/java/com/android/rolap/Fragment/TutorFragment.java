@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.rolap.Activity.DetailTutorActivity;
 import com.android.rolap.Activity.MenuActivity;
 import com.android.rolap.Adapter.KategoriAdapter;
 import com.android.rolap.Adapter.TutorAdapter;
@@ -97,9 +98,15 @@ public class TutorFragment extends Fragment {
                     tutorAdapter.setOnDetailClick(new TutorAdapter.OnDetailsClick() {
                         @Override
                         public void onDetailClick(int position) {
-                            Intent intent = new Intent(getActivity(), MenuActivity.class);
-                            intent.putExtra("kid", tutorList.get(position).id);
+                            Intent intent = new Intent(getActivity(), DetailTutorActivity.class);
+                            intent.putExtra("tid", tutorList.get(position).id);
                             intent.putExtra("nama", tutorList.get(position).nama);
+                            intent.putExtra("jenis_kelamin", tutorList.get(position).jenis_kelamin);
+                            intent.putExtra("telepon", tutorList.get(position).telepon);
+                            intent.putExtra("total_rate", tutorList.get(position).total_rate);
+                            intent.putExtra("rate_avg", tutorList.get(position).rate_avg);
+                            intent.putExtra("alamat", tutorList.get(position).alamat);
+                            intent.putExtra("harga", tutorList.get(position).harga);
                             intent.putExtra("foto", tutorList.get(position).foto);
                             ActivityOptions options =
                                     null;

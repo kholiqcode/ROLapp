@@ -5,12 +5,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ImageView
-        android:id="@+id/ic_navigate_before"
+        android:id="@+id/ivBack"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="10dp"
-        android:src="@drawable/ic_navigate_before"
+        app:srcCompat="@drawable/ic_navigate_before"
         android:layout_marginStart="5dp"
         android:layout_alignParentStart="true"
         android:contentDescription="Detail Pemesanan"
@@ -18,32 +18,32 @@
         android:layout_alignParentLeft="true" />
 
     <TextView
-        android:id="@+id/login_title"
+        android:id="@+id/tvDetailTutor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Detail Pemesanan"
+        android:text="Detail Tutor"
         android:fontFamily="sans-serif-black"
         android:textSize="30sp"
         android:textColor="@color/colorBlack"
         android:textStyle="bold"
         android:layout_marginTop="10dp"
-        android:layout_toEndOf="@+id/ic_navigate_before"
+        android:layout_toEndOf="@+id/ivBack"
         android:layout_marginStart="25dp"
-        android:layout_toRightOf="@+id/ic_navigate_before"
+        android:layout_toRightOf="@+id/ivBack"
         android:layout_marginLeft="25dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="170dp"
         android:orientation="horizontal"
-        android:layout_below="@+id/login_title"
+        android:layout_below="@+id/tvDetailTutor"
         android:background="@drawable/shape_rectangle_bottom_rounded_blue"
         android:id="@+id/llTop"
         >
 
             <de.hdodenhof.circleimageview.CircleImageView
                 xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/ciProfil"
+                android:id="@+id/civTutor"
                 android:layout_width="96dp"
                 android:layout_height="96dp"
                 android:src="@drawable/image_profil"
@@ -52,30 +52,46 @@
                 android:layout_marginLeft="25dp"
                 android:layout_gravity="center"/>
 
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:orientation="vertical" >
 
                 <TextView
-                    android:id="@+id/tv_username"
+                    android:id="@+id/tvNamaTutor"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Donny Pratama"
                     android:textSize="25sp"
+                    app:autoSizeTextType="uniform"
+                    android:maxLines="2"
                     android:textColor="@color/colorBlack"
                     android:layout_marginTop="20dp"
                     android:gravity="center"
                     android:textStyle="bold"/>
 
+                <RatingBar
+                    android:id="@+id/rbTutor"
+                    style="?android:attr/ratingBarStyleIndicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_gravity="center"
+                    android:clickable="false"
+                    android:isIndicator="true"
+                    android:numStars="5"
+                    android:stepSize="0.1"
+                    android:theme="@style/RatingBar"/>
+
                     <TextView
-                    android:id="@+id/tv_kategori"
+                    android:id="@+id/tvHargaTutor"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Renang"
-                    android:textSize="18sp"
+                    android:text="Rp 150000"
+                    android:textSize="22sp"
                     android:textColor="@color/colorWhite"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="18dp"
                     android:gravity="center"
                     android:textStyle="bold"/>
 
@@ -105,6 +121,7 @@
                 android:textColor="@color/colorBlack"
                 android:textStyle="bold"/>
             <TextView
+                android:id="@+id/tvAlamatTutor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Jl A Yani 6 Link Kepatihan"
@@ -129,6 +146,7 @@
                 android:textColor="@color/colorWhite"
                 android:textStyle="bold"/>
             <TextView
+                android:id="@+id/tvJenisKelamin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Laki-laki"
@@ -152,6 +170,7 @@
                 android:textColor="@color/colorBlack"
                 android:textStyle="bold"/>
             <TextView
+                android:id="@+id/tvTelepon"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="089647583033"
@@ -170,26 +189,53 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Jadwal :"
+                android:text="Tanggal :"
                 android:textSize="18sp"
                 android:layout_marginHorizontal="10dp"
                 android:textColor="@color/colorWhite"
                 android:textStyle="bold"/>
-            <TextView
+            <EditText
+                android:id="@+id/etTanggal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Selasa, 25 Agustus 2020 13.30"
+                android:text="28-08-2020"
+                android:background="@android:color/transparent"
                 android:layout_marginHorizontal="10dp"
                 android:textSize="16sp"
                 android:maxLines="3"
                 android:textColor="@color/colorWhite"/>
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Jam :"
+                android:textSize="18sp"
+                android:layout_marginHorizontal="10dp"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold"/>
+            <EditText
+                android:id="@+id/etJam"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="15:30"
+                android:background="@android:color/transparent"
+                android:textSize="16sp"
+                android:layout_marginHorizontal="10dp"
+                android:maxLines="3"
+                android:textColor="@color/colorBlack"/>
+        </LinearLayout>
+
         <Button
-            android:id="@+id/btn_pesan"
-            android:layout_width="300dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="20dp"
+            android:id="@+id/btnPesan"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="30dp"
             android:layout_gravity="center"
             android:elevation="3dp"
             android:text="@string/pesan_sekarang"
