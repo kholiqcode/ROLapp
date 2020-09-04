@@ -52,14 +52,15 @@ class Tutor_model extends CI_Model
     {
 
         if (isset($input['tid']) && !empty($input['tid'])) {
-            $query    = $this->db->where('tutor.id', $input['tid'])->get($this->table)->row_array();
+            $query    = $this->db->select('tutor.*,users.telepon')->where('tutor.id', $input['tid'])->join('users', 'tutor.id_users=users.id')->get($this->table)->row_array();
+        } else if (isset($input['kid']) && !empty($input['kid'])) {
+            $query    = $this->db->select('tutor.*,users.telepon')->where('tutor.id_kategori', $input['kid'])->join('users', 'tutor.id_users=users.id')->get($this->table)->result_array();
         } else {
-            $query    = $this->db->get($this->table)->result_array();
+            $query    = $this->db->select('tutor.*,users.telepon')->join('users', 'tutor.id_users=users.id')->get($this->table)->result_array();
         }
 
         return $query;
     }
-
 }
 
 /* End of file Tutor_model.php */
