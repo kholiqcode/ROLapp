@@ -66,7 +66,7 @@ public class SplashActivity extends AppCompatActivity {
 //                Log.d("isFirstTime",""+prefmanager.isFirstTime());
 //                launchHomeScreen();
             }
-        }, 5000);
+        }, 3000);
     }
 
     public void getInfo(){

@@ -94,8 +94,6 @@ public class KategoriFragment extends Fragment {
                         public void onDetailClick(int position) {
                             Intent intent = new Intent(getActivity(), MenuActivity.class);
                             intent.putExtra("kid", kategoriList.get(position).id);
-                            intent.putExtra("nama", kategoriList.get(position).nama);
-                            intent.putExtra("foto", kategoriList.get(position).foto);
                             ActivityOptions options =
                                     null;
                             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN) {

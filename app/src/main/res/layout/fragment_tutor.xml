@@ -5,13 +5,6 @@
     android:layout_height="match_parent"
     android:background="@android:color/transparent">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/llBottom"
-        android:orientation="vertical"
-        tools:ignore="UnknownId">
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvTutor"
             android:layout_width="match_parent"
@@ -28,7 +21,6 @@
             android:textColor="@color/colorBlack"
             android:textSize="20sp"
             android:visibility="gone" />
-    </LinearLayout>
 
     <include layout="@layout/layout_progressbar"/>
 

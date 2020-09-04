@@ -4,6 +4,7 @@ package com.android.rolap.Rest;
 import com.android.rolap.Rest.Response.ResponseDaftar;
 import com.android.rolap.Rest.Response.ResponseKategori;
 import com.android.rolap.Rest.Response.ResponseLogin;
+import com.android.rolap.Rest.Response.ResponseTutor;
 import com.android.rolap.Rest.Response.ResponseUsers;
 
 import retrofit2.Call;
@@ -34,6 +35,10 @@ public interface RequestAPI {
 
     @GET("kategori")
     Call<ResponseKategori> getKategori(@Query("apikey") String apikey);
+
+    @GET("tutor")
+    Call<ResponseTutor> getTutor(@Query("apikey") String apikey,
+                                 @Query("kid") String kid);
 
 
 }
