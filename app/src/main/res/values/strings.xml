@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Tutor</string>
+    <string name="app_name">ROLap</string>
     <string name="login_title">Login</string>
     <string name="email">Email</string>
     <string name="hint_email">Masukkan email anda</string>
@@ -36,4 +36,7 @@
     <string name="alamat">Alamat</string>
     <string name="logout">Logout</string>
     <string name="tutor">Tutor</string>
+    <string name="msgWrong">Sepertinya ada yang salah</string>
+    <string name="msgNoCennection">Tidak ada koneksi internet</string>
+    <string name="gender">Jenis Kelamin</string>
 </resources>

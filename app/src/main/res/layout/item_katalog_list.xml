@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="20dp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvKategori"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            app:cardBackgroundColor="@color/colorBlue"
+            app:cardElevation="3dp"
+            app:cardCornerRadius="20dp"
+            android:layout_marginHorizontal="10dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:id="@+id/rl_ivkatalog"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/civKategori"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_centerInParent="true"
+                        android:layout_margin="5dp"
+                        app:civ_border_color="@color/colorBlack"
+                        app:civ_border_width="1dp"
+                        android:src="@drawable/image_user"/>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_toRightOf="@+id/rl_ivkatalog"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+
+                        android:layout_marginLeft="10dp"
+                        android:orientation="vertical">
+                        <TextView
+                            android:id="@+id/tvNamaKategori"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="PAKET 1"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:layout_marginTop="5dp"/>
+                        <TextView
+                            android:id="@+id/tvTotalTutor"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Ayam goreng,sayur.dll"
+                            android:textSize="15dp"
+                            android:layout_marginTop="5dp"/>
+
+                    </LinearLayout>
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+</FrameLayout>

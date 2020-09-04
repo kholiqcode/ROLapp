@@ -11,6 +11,7 @@
         android:layout_height="100dp">
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/cvKategori"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_centerInParent="true"
@@ -28,7 +29,7 @@
                 android:layout_marginLeft="50dp">
 
                 <TextView
-                    android:id="@+id/tvMenuTitle"
+                    android:id="@+id/tvNamaKategori"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -38,29 +39,29 @@
                     android:textSize="16sp"
                     tools:text="RENANG" />
 
-                <RatingBar
-                    android:id="@+id/rating"
-                    style="?android:attr/ratingBarStyleSmall"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"
-                    android:clickable="false"
-                    android:isIndicator="true"
-                    android:numStars="5"
-                    android:stepSize="0.1"
-                    android:theme="@style/RatingBar" />
+<!--                <RatingBar-->
+<!--                    android:id="@+id/rbRating"-->
+<!--                    style="?android:attr/ratingBarStyleSmall"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:layout_marginBottom="5dp"-->
+<!--                    android:clickable="false"-->
+<!--                    android:isIndicator="true"-->
+<!--                    android:numStars="5"-->
+<!--                    android:stepSize="0.1"-->
+<!--                    android:theme="@style/RatingBar" />-->
 
                 <TextView
-                    android:id="@+id/tvMenuItems"
+                    android:id="@+id/tvTotalTutor"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:fontFamily="@font/opensansregular"
-                    android:text="44 Items"
+                    android:text="44 Tutor aktif"
+                    android:layout_marginTop="20dp"
                     android:textColor="@color/colorBlack"
-                    android:textSize="15sp"
-                    tools:text="44 tutor tersedia" />
+                    android:textSize="15sp" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
     </RelativeLayout>
@@ -70,7 +71,7 @@
         android:layout_height="100dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/ivMenu"
+            android:id="@+id/civKategori"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_centerInParent="true"
@@ -91,7 +92,7 @@
         android:layout_height="100dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/ivMenuDetail"
+            android:id="@+id/ivKategoriDetail"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_alignParentEnd="true"
@@ -99,7 +100,7 @@
             android:layout_gravity="center"
             android:layout_margin="10dp"
             android:background="@android:color/transparent"
-            android:src="@drawable/ic_navigate_next"
+            app:srcCompat="@drawable/ic_navigate_next"
             android:visibility="visible"
             app:civ_border_color="@color/colorWhite"
             app:civ_border_width="0dp"
@@ -109,5 +110,5 @@
             android:layout_alignParentRight="true" />
     </RelativeLayout>
 
-
+    <include layout="@layout/layout_progressbar"/>
 </FrameLayout>
