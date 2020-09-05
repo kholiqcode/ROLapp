@@ -2,6 +2,8 @@ package com.android.rolap.Activity;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,6 +26,7 @@ public class MenuActivity extends AppCompatActivity implements BottomNavigationV
 
     private Helper helper;
     private PrefManager prefmanager;
+    private BottomNavigationView bnview;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,7 +36,7 @@ public class MenuActivity extends AppCompatActivity implements BottomNavigationV
         helper = new Helper(this);
         prefmanager = new PrefManager(this);
 
-        BottomNavigationView bnview = findViewById(R.id.bnvMenu);
+        bnview = findViewById(R.id.bnvMenu);
         bnview.setOnNavigationItemSelectedListener(this);
 
         String fragment = getIntent().getStringExtra("fragment");
@@ -70,6 +73,12 @@ public class MenuActivity extends AppCompatActivity implements BottomNavigationV
         ft.replace(R.id.container, fragment, fragment.getClass().getSimpleName());
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.commit();
+    }
+
+    @Override
+    protected void onResume() {
+        bnview.setOnNavigationItemSelectedListener(this);
+        super.onResume();
     }
 
     @Override

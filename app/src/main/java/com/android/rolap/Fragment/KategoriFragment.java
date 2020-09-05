@@ -41,6 +41,7 @@ public class KategoriFragment extends Fragment {
     private List<ResponseKategori.Data> kategoriList;
     private TextView tvNoData;
     private KategoriAdapter kategoriAdapter;
+    public static String KID = "KID";
 
     @Nullable
     @Override
@@ -94,9 +95,9 @@ public class KategoriFragment extends Fragment {
                     kategoriAdapter.setOnDetailClick(new KategoriAdapter.OnDetailsClick() {
                         @Override
                         public void onDetailClick(int position) {
-                            Intent intent = new Intent(getActivity(), MenuActivity.class);
-                            intent.putExtra("kid", kategoriList.get(position).id);
-                            replaceFragment(new TutorFragment());
+//                            Intent intent = new Intent(getActivity(), MenuActivity.class);
+//                            intent.putExtra("kid", kategoriList.get(position).id);
+                            replaceFragment(new TutorFragment(),kategoriList.get(position).id);
                         }
                     });
 
@@ -113,7 +114,10 @@ public class KategoriFragment extends Fragment {
         });
     }
 
-    public void replaceFragment(@NonNull Fragment fragment) {
+    public void replaceFragment(@NonNull Fragment fragment,@Nullable String kid) {
+        Bundle mBundle = new Bundle();
+        mBundle.putString(KID, kid);
+        fragment.setArguments(mBundle);
         FragmentManager fm = getFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
         ft.replace(R.id.container, fragment, fragment.getClass().getSimpleName());

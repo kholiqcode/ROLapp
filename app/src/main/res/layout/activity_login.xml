@@ -14,7 +14,7 @@
         android:layout_alignParentLeft="true"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="5dp"
-        android:src="@drawable/ic_navigate_before"
+        app:srcCompat="@drawable/ic_navigate_before"
         android:layout_marginStart="5dp"
         android:layout_alignParentStart="true" />
 

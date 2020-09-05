@@ -39,4 +39,11 @@
     <string name="msgWrong">Sepertinya ada yang salah</string>
     <string name="msgNoCennection">Tidak ada koneksi internet</string>
     <string name="gender">Jenis Kelamin</string>
+    <string name="TutorSaya">TutorSaya</string>
+    <string name="TambahTutor">Tambah Tutor</string>
+    <string name="spasaya">Spa Saya</string>
+    <string name="TambahSpa">Tambah Spa</string>
+    <string name="jadwalsaya">Jadwal Saya</string>
+    <string name="spa">Spa</string>
+    <string name="hint_alamat">Masukkan alamat anda</string>
 </resources>

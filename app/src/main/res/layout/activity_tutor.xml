@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:id="@+id/llActionBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@android:color/transparent">
+    <ImageView
+        android:id="@+id/ivBack"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        app:srcCompat="@drawable/ic_navigate_before"
+        android:layout_marginStart="5dp"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/login_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tutor"
+        android:fontFamily="sans-serif-black"
+        android:textSize="30sp"
+        android:textColor="@color/colorBlack"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/ivBack"
+        android:layout_marginStart="10dp"
+        android:layout_toRightOf="@+id/ivBack"
+        android:layout_marginLeft="10dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:orientation="vertical"
+        android:layout_below="@+id/llActionBar"
+        android:background="@drawable/shape_rectangle_bottom_rounded_blue"
+        android:id="@+id/llTop"
+        >
+
+
+        <TextView
+            android:id="@+id/tvPendapatan"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="Pendapatan Saya"
+            android:textSize="25sp"
+            android:textColor="@color/colorWhite"
+            android:gravity="center"
+            android:layout_marginTop="25dp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/tvNamaUser"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="Rp 3500000"
+            android:textSize="25sp"
+            android:textColor="@color/colorBlack"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_profil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@+id/llTop"
+        android:layout_marginTop="30dp"
+        android:layout_marginHorizontal="30dp"
+        >
+        <RelativeLayout
+            android:id="@+id/rlUbahProfil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentStart="true"
+                app:srcCompat="@drawable/ic_tutor"
+                android:layout_alignParentLeft="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="@string/TutorSaya"
+                android:textSize="25sp"
+                android:textColor="@color/colorBlack"
+                android:layout_marginLeft="100dp"
+                android:padding="5dp"/>
+            <ImageView
+                android:id="@+id/iv_ubah_profil"
+                android:layout_alignParentEnd="true"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="70dp"
+                app:srcCompat="@drawable/ic_navigate_next"
+                android:layout_gravity="right"
+                android:layout_alignParentRight="true" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlAlamat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="40dp">
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentStart="true"
+                app:srcCompat="@drawable/ic_plus_circle"
+                android:layout_alignParentLeft="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/TambahTutor"
+                android:textSize="25sp"
+                android:textColor="@color/colorBlack"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="100dp"
+                android:padding="5dp"/>
+            <ImageView
+                android:layout_alignParentEnd="true"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="70dp"
+                app:srcCompat="@drawable/ic_navigate_next"
+                android:layout_gravity="right"
+                android:layout_alignParentRight="true" />
+        </RelativeLayout>
+    </LinearLayout>
+
+
+
+</RelativeLayout>

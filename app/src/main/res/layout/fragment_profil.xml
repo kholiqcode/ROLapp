@@ -14,7 +14,7 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/ciProfil"
+            android:id="@+id/civProfil"
             android:layout_width="96dp"
             android:layout_height="96dp"
             android:src="@drawable/image_profil"
@@ -24,9 +24,9 @@
             android:layout_gravity="center"/>
 
         <TextView
-            android:id="@+id/tv_username"
+            android:id="@+id/tvNamaUser"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:text="Donny Pratama"
             android:textSize="25sp"
             android:textColor="@color/colorBlack"
@@ -41,11 +41,11 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_below="@+id/llTop"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:layout_marginHorizontal="30dp"
         >
         <RelativeLayout
-            android:id="@+id/rl_ubah_profil"
+            android:id="@+id/rlUbahProfil"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -53,7 +53,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_alignParentStart="true"
-                android:src="@drawable/ic_edit"
+                app:srcCompat="@drawable/ic_edit"
                 android:layout_alignParentLeft="true" />
             <TextView
                 android:layout_width="wrap_content"
@@ -70,48 +70,17 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginLeft="70dp"
-                android:src="@drawable/ic_navigate_next"
+                app:srcCompat="@drawable/ic_navigate_next"
                 android:layout_gravity="right"
                 android:layout_alignParentRight="true" />
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/rl_alamat"
+            android:id="@+id/rlTutor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="40dp">
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_alignParentStart="true"
-                android:src="@drawable/ic_location"
-                android:layout_alignParentLeft="true" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/alamat"
-                android:textSize="25sp"
-                android:textColor="@color/colorBlack"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="100dp"
-                android:padding="5dp"/>
-            <ImageView
-                android:layout_alignParentEnd="true"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginLeft="70dp"
-                android:src="@drawable/ic_navigate_next"
-                android:layout_gravity="right"
-                android:layout_alignParentRight="true" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/rl_tutor"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="40dp">
+            android:layout_marginTop="25dp">
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
@@ -132,23 +101,85 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginLeft="70dp"
-                android:src="@drawable/ic_navigate_next"
+                app:srcCompat="@drawable/ic_navigate_next"
                 android:layout_gravity="right"
                 android:layout_alignParentRight="true" />
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/rl_keluar"
+            android:id="@+id/rlSpa"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="40dp">
+            android:layout_marginTop="25dp">
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentStart="true"
+                android:src="@drawable/ic_spa"
+                android:layout_alignParentLeft="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/spa"
+                android:textSize="25sp"
+                android:textColor="@color/colorBlack"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="100dp"
+                android:padding="5dp"/>
+            <ImageView
+                android:layout_alignParentEnd="true"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="70dp"
+                app:srcCompat="@drawable/ic_navigate_next"
+                android:layout_gravity="right"
+                android:layout_alignParentRight="true" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlJadwal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="25dp">
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentStart="true"
+                app:srcCompat="@drawable/ic_jadwal"
+                android:layout_alignParentLeft="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/jadwalsaya"
+                android:textSize="25sp"
+                android:textColor="@color/colorBlack"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="100dp"
+                android:padding="5dp"/>
+            <ImageView
+                android:layout_alignParentEnd="true"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="70dp"
+                app:srcCompat="@drawable/ic_navigate_next"
+                android:layout_gravity="right"
+                android:layout_alignParentRight="true" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlLogout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="25dp">
             <ImageView
                 android:id="@+id/iv_alamat"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_alignParentStart="true"
-                android:src="@drawable/ic_logout"
+                app:srcCompat="@drawable/ic_logout"
                 android:layout_alignParentLeft="true" />
             <TextView
                 android:layout_width="wrap_content"
@@ -164,7 +195,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginLeft="70dp"
-                android:src="@drawable/ic_navigate_next"
+                app:srcCompat="@drawable/ic_navigate_next"
                 android:layout_gravity="right"
                 android:layout_alignParentRight="true" />
         </RelativeLayout>

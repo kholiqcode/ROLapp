@@ -56,6 +56,8 @@ public class DaftarActivity extends AppCompatActivity implements View.OnClickLis
         ivKembali = findViewById(R.id.ivBack);
         tvLogin = findViewById(R.id.link_login);
 
+        cbMan.setOnClickListener(this);
+        cbWoman.setOnClickListener(this);
         btnDaftar.setOnClickListener(this);
         ivKembali.setOnClickListener(this);
         tvLogin.setOnClickListener(this);
@@ -68,6 +70,16 @@ public class DaftarActivity extends AppCompatActivity implements View.OnClickLis
         switch (id) {
             case R.id.ivBack:
                 onBackPressed();
+                break;
+            case R.id.CBman:
+                if(cbMan.isChecked()){
+                    cbWoman.setChecked(false);
+                }
+                break;
+            case R.id.CBwoman:
+                if(cbWoman.isChecked()){
+                    cbMan.setChecked(false);
+                }
                 break;
             case R.id.btnDaftar:
                 if (isValidate()) {

@@ -33,6 +33,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.android.rolap.Fragment.KategoriFragment.KID;
+
 public class TutorFragment extends Fragment {
     private View view;
     private Helper helper;
@@ -75,6 +77,7 @@ public class TutorFragment extends Fragment {
     public void getKategoriList() {
         progressbar.setVisibility(View.VISIBLE);
         RequestAPI rolapAPI = RestApi.createAPI();
+        String kid = getArguments().getString(KID);
         Call<ResponseTutor> call = rolapAPI.getTutor(prefmanager.getToken(),kid);
         call.enqueue(new Callback<ResponseTutor>() {
             @Override

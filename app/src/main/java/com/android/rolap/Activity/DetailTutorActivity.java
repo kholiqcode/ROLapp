@@ -74,9 +74,6 @@ public class DetailTutorActivity extends AppCompatActivity implements View.OnCli
 
         TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tvNamaTutor, 18, 25, 1,
                 TypedValue.COMPLEX_UNIT_DIP);
-        if(tvNamaTutor.getLineCount() == 2){
-            tvNamaTutor.setTextSize(18);
-        }
         tvAlamatTutor.setText(strAlamat);
         tvJenisKelamin.setText(strJenisKelamin);
         rbTutor.setRating(Float.parseFloat(strRateAvg));
