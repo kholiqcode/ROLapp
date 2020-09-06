@@ -13,6 +13,8 @@ class Pemesanan_model extends CI_Model
 
         $harga = $this->getHarga($input['tid']);
 
+        if(is_null($harga)) $harga = 0;
+
         $data        = [
             'id_tutor'        => $input['tid'],
             'id_users'        => $uid,
@@ -29,10 +31,12 @@ class Pemesanan_model extends CI_Model
 
     public function getPemesanan($input = null)
     {
+        $uid = $this->token->decrypt($input['apikey']);
 
         if (isset($input['pid']) && !empty($input['pid'])) {
             $this->db->select('pemesanan.id,pemesanan.id_tutor,pemesanan.id_users,pemesanan.id_pembayaran,tutor.nama,users.jenis_kelamin,tutor.alamat,tutor.total_trx,tutor.rate_avg,tutor.total_rate,tutor.foto,pembayaran.metode_pembayaran,pemesanan.tanggal,pemesanan.waktu,pemesanan.status,pemesanan.total');
             $this->db->where('pemesanan.id', $input['pid']);
+            $this->db->where('pemesanan.id_users', $uid);
             $this->db->join('tutor', 'tutor.id=pemesanan.id_tutor');
             $this->db->join('users', 'tutor.id_users=users.id');
             $this->db->join('pembayaran', 'pembayaran.id=pemesanan.id_pembayaran')->order_by('pemesanan.status', 'desc');
@@ -40,6 +44,7 @@ class Pemesanan_model extends CI_Model
         } else {
             $this->db->select('pemesanan.id,pemesanan.id_tutor,pemesanan.id_users,pemesanan.id_pembayaran,tutor.nama,users.jenis_kelamin,tutor.alamat,tutor.total_trx,tutor.rate_avg,tutor.total_rate,tutor.foto,pembayaran.metode_pembayaran,pemesanan.tanggal,pemesanan.waktu,pemesanan.status,pemesanan.total');
             $this->db->join('tutor', 'tutor.id=pemesanan.id_tutor');
+            $this->db->where('pemesanan.id_users', $uid);
             $this->db->join('users', 'tutor.id_users=users.id');
             $this->db->join('pembayaran', 'pembayaran.id=pemesanan.id_pembayaran');
             $this->db->order_by('pemesanan.status', 'desc');
