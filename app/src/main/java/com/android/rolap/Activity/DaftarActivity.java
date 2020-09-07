@@ -147,7 +147,7 @@ public class DaftarActivity extends AppCompatActivity implements View.OnClickLis
         strKonfirmasiPassword = etKonfirmasiPassword.getText().toString().trim();
         if (cbMan.isChecked()) {
             strJenisKelamin = "L";
-        }else if(cbMan.isChecked()){
+        }else if(cbWoman.isChecked()){
             strJenisKelamin = "P";
         }
 

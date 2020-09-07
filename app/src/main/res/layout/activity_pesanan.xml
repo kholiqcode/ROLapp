@@ -74,7 +74,7 @@
                     tools:text="Donny Pratama"/>
 
                     <TextView
-                    android:id="@+id/tvKategori"
+                    android:id="@+id/tvTotal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Rp 150000"
@@ -183,8 +183,8 @@
                 android:layout_marginHorizontal="10dp"
                 android:textColor="@color/colorWhite"
                 android:textStyle="bold"/>
-            <EditText
-                android:id="@+id/etTanggal"
+            <TextView
+                android:id="@+id/tvTanggal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="28-08-2020"
@@ -208,8 +208,8 @@
                 android:layout_marginHorizontal="10dp"
                 android:textColor="@color/colorBlack"
                 android:textStyle="bold"/>
-            <EditText
-                android:id="@+id/etJam"
+            <TextView
+                android:id="@+id/tvJam"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="15:30"
@@ -221,7 +221,5 @@
         </LinearLayout>
 
     </LinearLayout>
-
-
-
+    <include layout="@layout/layout_progressbar" />
 </RelativeLayout>

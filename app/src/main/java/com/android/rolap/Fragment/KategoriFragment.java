@@ -57,8 +57,6 @@ public class KategoriFragment extends Fragment {
         rvKategori.setNestedScrollingEnabled(false);
         rvKategori.setHasFixedSize(false);
 
-        prefmanager = new PrefManager(getActivity());
-
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         rvKategori.setLayoutManager(layoutManager);
         if (helper.isOnline()) {

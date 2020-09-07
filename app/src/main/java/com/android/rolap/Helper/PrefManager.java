@@ -28,6 +28,7 @@ public class PrefManager {
         refreshToken();
         refreshNama();
         refreshEmail();
+        refreshAlamat();
         refreshGender();
         refreshTelepon();
         refreshFoto();
@@ -104,7 +105,11 @@ public class PrefManager {
     }
 
     public void setEmail(@Nullable String email) {
+
         this.email = email;
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putString(EMAIL_USER, email);
+        editor.apply();
     }
 
     private void refreshGender() {
@@ -118,6 +123,9 @@ public class PrefManager {
 
     public void setGender(@Nullable String gender) {
         this.gender = gender;
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putString(GENDER_USER, gender);
+        editor.apply();
     }
 
     private void refreshTelepon() {
@@ -131,6 +139,9 @@ public class PrefManager {
 
     public void setTelepon(@Nullable String telepon) {
         this.telepon = telepon;
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putString(TELEPON_USER, telepon);
+        editor.apply();
     }
 
     private void refreshAlamat() {
@@ -144,6 +155,9 @@ public class PrefManager {
 
     public void setAlamat(@Nullable String alamat) {
         this.alamat = alamat;
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putString(ALAMAT_USER, alamat);
+        editor.apply();
     }
 
     private void refreshFoto() {
@@ -157,6 +171,9 @@ public class PrefManager {
 
     public void setFoto(@Nullable String foto) {
         this.foto = foto;
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putString(FOTO_USER, foto);
+        editor.apply();
     }
 
 }

@@ -30,7 +30,7 @@ import retrofit2.Response;
 public class SplashActivity extends AppCompatActivity {
     private PrefManager prefmanager;
     private Helper helper;
-    private List<ResponseUsers.DataUser> dataUser;
+    private List<ResponseUsers.Data> dataUser;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -77,12 +77,12 @@ public class SplashActivity extends AppCompatActivity {
             public void onResponse(Call<ResponseUsers> call, Response<ResponseUsers> response) {
                 if (response.isSuccessful()) {
                     dataUser = response.body().data;
-                    prefmanager.setNama(dataUser.get(0).getNama());
-                    prefmanager.setEmail(dataUser.get(0).getEmail());
-                    prefmanager.setTelepon(dataUser.get(0).getTelepon());
-                    prefmanager.setGender(dataUser.get(0).getJenis_kelamin());
-                    prefmanager.setAlamat(dataUser.get(0).getAlamat());
-                    prefmanager.setFoto(dataUser.get(0).getFoto());
+                    prefmanager.setNama(dataUser.get(0).nama);
+                    prefmanager.setEmail(dataUser.get(0).email);
+                    prefmanager.setTelepon(dataUser.get(0).telepon);
+                    prefmanager.setGender(dataUser.get(0).jenis_kelamin);
+                    prefmanager.setAlamat(dataUser.get(0).alamat);
+                    prefmanager.setFoto(dataUser.get(0).foto);
                     Intent intent = new Intent(SplashActivity.this, MenuActivity.class);
                     ActivityOptions options1 =
                             null;

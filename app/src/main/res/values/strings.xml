@@ -46,4 +46,5 @@
     <string name="jadwalsaya">Jadwal Saya</string>
     <string name="spa">Spa</string>
     <string name="hint_alamat">Masukkan alamat anda</string>
+    <string name="pilih_pembayaran">Pilih Metode Pembayaran</string>
 </resources>

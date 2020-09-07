@@ -7,7 +7,7 @@
     android:background="@color/colorWhiteGrey">
 
     <ImageView
-        android:id="@+id/ic_navigate_before"
+        android:id="@+id/ivBack"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_alignParentTop="true"
@@ -20,7 +20,7 @@
         android:layout_alignParentLeft="true" />
 
     <TextView
-        android:id="@+id/login_title"
+        android:id="@+id/tvUbahProfil"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/ubah_profil"
@@ -29,21 +29,21 @@
         android:textColor="@color/colorBlack"
         android:textStyle="bold"
         android:layout_marginTop="10dp"
-        android:layout_toEndOf="@+id/ic_navigate_before"
+        android:layout_toEndOf="@+id/ivBack"
         android:layout_marginStart="25dp"
-        android:layout_toRightOf="@+id/ic_navigate_before"
+        android:layout_toRightOf="@+id/ivBack"
         android:layout_marginLeft="25dp" />
 
     <RelativeLayout
         android:id="@+id/rlTop"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_below="@+id/login_title"
+        android:layout_below="@+id/tvUbahProfil"
         android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"
         >
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/ciProfil"
+            android:id="@+id/civProfil"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@drawable/image_profil"
@@ -57,12 +57,12 @@
             app:srcCompat="@drawable/ic_camera"
             android:layout_gravity="center"
             android:layout_marginStart="-30dp"
-            android:layout_alignBottom="@id/ciProfil"
-            android:layout_toEndOf="@+id/ciProfil"
-            android:contentDescription="ciProfil"
+            android:layout_alignBottom="@id/civProfil"
+            android:layout_toEndOf="@+id/civProfil"
+            android:contentDescription="civProfil"
             tools:ignore="VectorDrawableCompat"
             android:layout_marginLeft="-30dp"
-            android:layout_toRightOf="@+id/ciProfil" />
+            android:layout_toRightOf="@+id/civProfil" />
 
     </RelativeLayout>
 
@@ -87,7 +87,7 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/nama_label"
+                    android:id="@+id/tvNamaUser"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/nama"
@@ -100,6 +100,7 @@
                     android:layout_marginLeft="25dp" />
 
                 <EditText
+                    android:id="@+id/etNama"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@null"
@@ -107,7 +108,7 @@
                     android:inputType="text"
                     android:layout_marginHorizontal="25dp"
                     android:layout_marginVertical="3dp"
-                    android:layout_below="@id/nama_label"
+                    android:layout_below="@id/tvNamaUser"
                     android:hint="@string/hint_nama"
                     android:importantForAutofill="no" />
 
@@ -125,7 +126,7 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/email_label"
+                    android:id="@+id/tvEmailUser"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/email"
@@ -138,6 +139,7 @@
                     android:layout_marginLeft="25dp" />
 
                 <EditText
+                    android:id="@+id/etEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@null"
@@ -145,7 +147,7 @@
                     android:inputType="textEmailAddress"
                     android:layout_marginHorizontal="25dp"
                     android:layout_marginVertical="3dp"
-                    android:layout_below="@id/email_label"
+                    android:layout_below="@id/tvEmailUser"
                     android:hint="@string/hint_email"
                     android:importantForAutofill="no" />
 
@@ -211,7 +213,7 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/telepon_label"
+                    android:id="@+id/tvTeleponUser"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/telepon"
@@ -224,6 +226,7 @@
                     android:layout_marginLeft="25dp" />
 
                 <EditText
+                    android:id="@+id/etTelepon"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@null"
@@ -231,7 +234,7 @@
                     android:inputType="textPhonetic"
                     android:layout_marginHorizontal="25dp"
                     android:layout_marginVertical="3dp"
-                    android:layout_below="@id/telepon_label"
+                    android:layout_below="@id/tvTeleponUser"
                     android:hint="@string/hint_telepon"
                     android:importantForAutofill="no" />
 
@@ -250,7 +253,7 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/tvAlamat"
+                    android:id="@+id/tvAlamatUser"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/alamat"
@@ -271,7 +274,7 @@
                     android:inputType="textPhonetic"
                     android:layout_marginHorizontal="25dp"
                     android:layout_marginVertical="3dp"
-                    android:layout_below="@id/tvAlamat"
+                    android:layout_below="@id/tvAlamatUser"
                     android:hint="@string/hint_alamat"
                     android:importantForAutofill="no" />
 
@@ -279,7 +282,7 @@
         </androidx.cardview.widget.CardView>
 
         <Button
-            android:id="@+id/btn_simpan"
+            android:id="@+id/btnSimpan"
             android:layout_width="220dp"
             android:layout_height="40dp"
             android:layout_marginTop="15dp"
@@ -294,6 +297,7 @@
             />
 
         <Button
+            android:id="@+id/btnUbahPassword"
             android:layout_width="220dp"
             android:layout_height="40dp"
             android:layout_marginTop="15dp"
@@ -306,5 +310,5 @@
             />
 
     </LinearLayout>
-<!--    <include layout="@layout/layout_progressbar" />-->
+    <include layout="@layout/layout_progressbar" />
 </RelativeLayout>
