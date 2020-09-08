@@ -9,6 +9,7 @@ import com.android.rolap.Rest.Response.ResponsePembayaran;
 import com.android.rolap.Rest.Response.ResponsePemesanan;
 import com.android.rolap.Rest.Response.ResponseProfil;
 import com.android.rolap.Rest.Response.ResponseTutor;
+import com.android.rolap.Rest.Response.ResponseUbahPassword;
 import com.android.rolap.Rest.Response.ResponseUsers;
 
 import retrofit2.Call;
@@ -66,6 +67,13 @@ public interface RequestAPI {
                                   @Field("alamat") String alamat,
                                   @Field("jenis_kelamin") String jenis_kelamin,
                                   @Field("telepon") String telepon);
+
+    @FormUrlEncoded
+    @PUT("users/ubah_password")
+    Call<ResponseUbahPassword> putUbahPassword(@Field("apikey") String apikey,
+                                        @Field("password_lama") String password_lama,
+                                        @Field("password_baru") String password_baru,
+                                        @Field("konfirmasi_password") String konfirmasi_password);
 
 
 }

@@ -23,7 +23,7 @@
         android:layout_alignParentStart="true" />
 
     <TextView
-        android:id="@+id/login_title"
+        android:id="@+id/tvTutor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Tutor"
@@ -81,7 +81,7 @@
         android:layout_marginHorizontal="30dp"
         >
         <RelativeLayout
-            android:id="@+id/rlUbahProfil"
+            android:id="@+id/rlTutorSaya"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -112,7 +112,7 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/rlAlamat"
+            android:id="@+id/rlTambahTutor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"

@@ -102,7 +102,7 @@ public class UbahProfilActivity extends AppCompatActivity implements View.OnClic
                 }
                 break;
             case R.id.btnUbahPassword:
-                Intent intLogin = new Intent(this, MenuActivity.class);
+                Intent intLogin = new Intent(this, UbahPasswordActivity.class);
                 ActivityOptions options =
                         null;
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN) {
