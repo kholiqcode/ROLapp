@@ -67,15 +67,16 @@ class Pemesanan_model extends CI_Model
         $uid = $this->token->decrypt($input['apikey']);
 
         if (isset($input['pid']) && !empty($input['pid'])) {
-            $this->db->select('pemesanan.id,pemesanan.id_tutor,pemesanan.id_users,pemesanan.id_pembayaran,tutor.nama,users.jenis_kelamin,tutor.alamat,tutor.total_trx,tutor.rate_avg,tutor.total_rate,tutor.foto,pembayaran.metode_pembayaran,pemesanan.tanggal,pemesanan.waktu,pemesanan.status,pemesanan.total');
-            $query    = $this->db->where('pemesanan.status', 1)->where('tutor.id_users', $uid)->where('pemesanan.id', $input['pid'])->join('tutor', 'pemesanan.id_tutor=tutor.id')->join('pembayaran', 'pembayaran.id=pemesanan.id_pembayaran')->join('users', 'pemesanan.id_users=users.id')->order_by('pemesanan.status', 'desc')->get($this->table)->row_array();
+            $this->db->select('pemesanan.id,pemesanan.id_tutor,pemesanan.id_users,pemesanan.id_pembayaran,tutor.nama as nama_tutor,users.nama as nama_user,users.jenis_kelamin,users.telepon,tutor.alamat,tutor.total_trx,tutor.rate_avg,tutor.total_rate,tutor.foto,pembayaran.metode_pembayaran,pemesanan.tanggal,pemesanan.waktu,pemesanan.status,pemesanan.total');
+            $query    = $this->db->where('pemesanan.status !=', 0)->where('tutor.id_users', $uid)->where('pemesanan.id', $input['pid'])->join('tutor', 'pemesanan.id_tutor=tutor.id')->join('pembayaran', 'pembayaran.id=pemesanan.id_pembayaran')->join('users', 'pemesanan.id_users=users.id')->order_by('pemesanan.status', 'desc')->get($this->table)->row_array();
         } else {
-            $this->db->select('pemesanan.id,pemesanan.id_tutor,pemesanan.id_users,pemesanan.id_pembayaran,tutor.nama,users.jenis_kelamin,tutor.alamat,tutor.total_trx,tutor.rate_avg,tutor.total_rate,tutor.foto,pembayaran.metode_pembayaran,pemesanan.tanggal,pemesanan.waktu,pemesanan.status,pemesanan.total');
-            $query    = $this->db->where('pemesanan.status', 1)->where('tutor.id_users', $uid)->join('tutor', 'pemesanan.id_tutor=tutor.id')->join('pembayaran', 'pembayaran.id=pemesanan.id_pembayaran')->join('users', 'pemesanan.id_users=users.id')->order_by('pemesanan.status', 'desc')->get($this->table)->result_array();
+            $this->db->select('pemesanan.id,pemesanan.id_tutor,pemesanan.id_users,pemesanan.id_pembayaran,tutor.nama as nama_tutor,users.nama as nama_user,users.jenis_kelamin,users.telepon,tutor.alamat,tutor.total_trx,tutor.rate_avg,tutor.total_rate,tutor.foto,pembayaran.metode_pembayaran,pemesanan.tanggal,pemesanan.waktu,pemesanan.status,pemesanan.total');
+            $query    = $this->db->where('pemesanan.status !=', 0)->where('tutor.id_users', $uid)->join('tutor', 'pemesanan.id_tutor=tutor.id')->join('pembayaran', 'pembayaran.id=pemesanan.id_pembayaran')->join('users', 'pemesanan.id_users=users.id')->order_by('pemesanan.status', 'desc')->get($this->table)->result_array();
         }
 
         return $query;
     }
+    
 }
 
 /* End of file Pemesanan_model.php */
