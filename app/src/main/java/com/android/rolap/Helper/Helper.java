@@ -118,4 +118,20 @@ public class Helper {
             return "encode-error";
         }
     }
+
+    public static String convertStatus(String status){
+        String res = "";
+        if(status.equalsIgnoreCase("0")){
+            res = "Belum Dibayar";
+        }else if(status.equalsIgnoreCase("1")){
+            res = "Terbayar";
+        }else if(status.equalsIgnoreCase("2")){
+            res = "Diproses";
+        }else if(status.equalsIgnoreCase("3")){
+            res = "Selesai";
+        }else{
+            res = "-";
+        }
+        return res;
+    }
 }

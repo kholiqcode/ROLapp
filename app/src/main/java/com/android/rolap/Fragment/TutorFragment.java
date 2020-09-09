@@ -62,8 +62,6 @@ public class TutorFragment extends Fragment {
 
         kid = getActivity().getIntent().getStringExtra("kid");
 
-        prefmanager = new PrefManager(getActivity());
-
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         rvTutor.setLayoutManager(layoutManager);
         if (helper.isOnline()) {

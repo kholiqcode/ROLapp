@@ -11,6 +11,7 @@
         android:layout_height="100dp">
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/cvJadwal"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_centerInParent="true"
@@ -28,7 +29,7 @@
                 android:layout_marginLeft="50dp">
 
                 <TextView
-                    android:id="@+id/tvMenuTitle"
+                    android:id="@+id/tvNamaUser"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -39,7 +40,7 @@
                     tools:text="Rino Ahmad" />
 
                 <TextView
-                    android:id="@+id/tvKategori"
+                    android:id="@+id/tvStatus"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -89,7 +90,7 @@
         android:layout_height="100dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/ivMenuDetail"
+            android:id="@+id/civJadwal"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_alignParentEnd="true"
@@ -106,6 +107,5 @@
             app:civ_circle_background_color="@color/colorBlue"
             android:layout_alignParentRight="true" />
     </RelativeLayout>
-
 
 </FrameLayout>

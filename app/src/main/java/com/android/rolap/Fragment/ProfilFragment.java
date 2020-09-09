@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.android.rolap.Activity.JadwalSayaActivity;
 import com.android.rolap.Activity.LoginActivity;
 import com.android.rolap.Activity.SpaActivity;
 import com.android.rolap.Activity.TutorActivity;
@@ -101,7 +102,7 @@ public class ProfilFragment extends Fragment implements View.OnClickListener{
                 break;
 
             case R.id.rlJadwal:
-                Intent intent5 = new Intent(getActivity(), SpaActivity.class);
+                Intent intent5 = new Intent(getActivity(), JadwalSayaActivity.class);
                 ActivityOptions options5 =
                         null;
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN) {

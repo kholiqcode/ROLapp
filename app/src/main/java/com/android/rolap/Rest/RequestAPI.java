@@ -2,6 +2,7 @@ package com.android.rolap.Rest;
 
 
 import com.android.rolap.Rest.Response.ResponseDaftar;
+import com.android.rolap.Rest.Response.ResponseJadwal;
 import com.android.rolap.Rest.Response.ResponseKategori;
 import com.android.rolap.Rest.Response.ResponseLogin;
 import com.android.rolap.Rest.Response.ResponseOrder;
@@ -51,6 +52,9 @@ public interface RequestAPI {
 
     @GET("pemesanan")
     Call<ResponseOrder> getOrder(@Query("apikey") String apikey);
+
+    @GET("pemesanan/jadwal")
+    Call<ResponseJadwal> getJadwal(@Query("apikey") String apikey);
 
     @FormUrlEncoded
     @POST("pemesanan")
