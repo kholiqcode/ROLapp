@@ -42,7 +42,7 @@ class Pemesanan extends RestController {
             $this->response([
                 'status' => false,
                 'message' => validation_errors(null, null)
-            ], 404);
+            ], 400);
         }
 
         $res = $this->pemesanan->addPesanan($data);

@@ -18,6 +18,7 @@ class Tutor_model extends CI_Model
             'nama'        => $input['nama'],
             'alamat'    => $input['alamat'],
             'harga'        => $input['harga'],
+            'role'        => 0
         ];
 
         $this->db->insert($this->table, $data);
@@ -52,11 +53,11 @@ class Tutor_model extends CI_Model
     {
 
         if (isset($input['tid']) && !empty($input['tid'])) {
-            $query    = $this->db->select('tutor.*,users.telepon,users.jenis_kelamin')->where('tutor.id', $input['tid'])->join('users', 'tutor.id_users=users.id')->get($this->table)->row_array();
+            $query    = $this->db->select('tutor.*,users.telepon,users.jenis_kelamin')->where('tutor.role', 0)->where('tutor.id', $input['tid'])->join('users', 'tutor.id_users=users.id')->get($this->table)->row_array();
         } else if (isset($input['kid']) && !empty($input['kid'])) {
-            $query    = $this->db->select('tutor.*,users.telepon,users.jenis_kelamin')->where('tutor.id_kategori', $input['kid'])->join('users', 'tutor.id_users=users.id')->get($this->table)->result_array();
+            $query    = $this->db->select('tutor.*,users.telepon,users.jenis_kelamin')->where('tutor.role', 0)->where('tutor.id_kategori', $input['kid'])->join('users', 'tutor.id_users=users.id')->get($this->table)->result_array();
         } else {
-            $query    = $this->db->select('tutor.*,users.telepon,users.jenis_kelamin')->join('users', 'tutor.id_users=users.id')->get($this->table)->result_array();
+            $query    = $this->db->select('tutor.*,users.telepon,users.jenis_kelamin')->where('tutor.role', 0)->join('users', 'tutor.id_users=users.id')->get($this->table)->result_array();
         }
 
         return $query;
