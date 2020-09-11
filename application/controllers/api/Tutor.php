@@ -66,9 +66,9 @@ class Tutor extends RestController
         }
     }
 
-    public function index_delete()
+    public function delete_post()
     {
-        $input = $this->delete();
+        $input = $this->post();
 
         if (!$this->validateDelete($input)) {
             $this->response([
@@ -96,6 +96,27 @@ class Tutor extends RestController
         $input     = $this->input->get(null, true);
 
         $res = $this->tutor->getTutor($input);
+
+        if ($res) {
+            $this->response([
+                'status' => true,
+                'data' => $res,
+                'message' => 'Berhasil mendapatkan list tutor'
+            ], 200);
+        } else {
+            $this->response([
+                'status' => false,
+                'message' => 'Data tidak ditemukan'
+            ], 400);
+        }
+    }
+
+    public function tutor_saya_get()
+    {
+
+        $input     = $this->input->get(null, true);
+
+        $res = $this->tutor->getTutorSaya($input);
 
         if ($res) {
             $this->response([

@@ -66,9 +66,9 @@ class Spa extends RestController
         }
     }
 
-    public function index_delete()
+    public function delete_post()
     {
-        $input = $this->delete();
+        $input = $this->post();
 
         if (!$this->validateDelete($input)) {
             $this->response([
@@ -86,7 +86,7 @@ class Spa extends RestController
             $this->response([
                 'status' => false,
                 'message' => 'Terjadi kesalahan'
-            ], 404);
+            ], 400);
         }
     }
 
@@ -96,6 +96,27 @@ class Spa extends RestController
         $input     = $this->input->get(null, true);
 
         $res = $this->spa->getSpa($input);
+
+        if ($res) {
+            $this->response([
+                'status' => true,
+                'data' => $res,
+                'message' => 'Berhasil mendapatkan list spa'
+            ], 200);
+        } else {
+            $this->response([
+                'status' => false,
+                'message' => 'Data tidak ditemukan'
+            ], 400);
+        }
+    }
+
+    public function spa_saya_get()
+    {
+
+        $input     = $this->input->get(null, true);
+
+        $res = $this->spa->getSpaSaya($input);
 
         if ($res) {
             $this->response([

@@ -62,6 +62,19 @@ class Tutor_model extends CI_Model
 
         return $query;
     }
+
+    public function getTutorSaya($input = null)
+    {
+        $uid = $this->token->decrypt($input['apikey']);
+
+        if (isset($input['tid']) && !empty($input['tid'])) {
+            $query    = $this->db->select('tutor.*,users.telepon,users.jenis_kelamin')->where('tutor.id_users', $uid)->where('tutor.role', 0)->where('tutor.id', $input['tid'])->join('users', 'tutor.id_users=users.id')->get($this->table)->row_array();
+        } else {
+            $query    = $this->db->select('tutor.*,users.telepon,users.jenis_kelamin')->where('tutor.id_users', $uid)->where('tutor.role', 0)->join('users', 'tutor.id_users=users.id')->get($this->table)->result_array();
+        }
+
+        return $query;
+    }
 }
 
 /* End of file Tutor_model.php */

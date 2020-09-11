@@ -62,6 +62,19 @@ class Spa_model extends CI_Model
 
         return $query;
     }
+
+    public function getSpaSaya($input = null)
+    {
+        $uid = $this->token->decrypt($input['apikey']);
+
+        if (isset($input['sid']) && !empty($input['sid'])) {
+            $query    = $this->db->select('tutor.*,users.telepon,users.jenis_kelamin')->where('tutor.id_users', $uid)->where('tutor.role', 1)->where('tutor.id', $input['sid'])->join('users', 'tutor.id_users=users.id')->get($this->table)->row_array();
+        } else {
+            $query    = $this->db->select('tutor.*,users.telepon,users.jenis_kelamin')->where('tutor.id_users', $uid)->where('tutor.role', 1)->join('users', 'tutor.id_users=users.id')->get($this->table)->result_array();
+        }
+
+        return $query;
+    }
 }
 
 /* End of file Spa_model.php */
