@@ -2,8 +2,8 @@ package com.android.rolap.Helper;
 
 public class Constant {
 
-    public static final String WEBSERVICE_PATH = "http://d554f0481075.ngrok.io/tutor/api/";
-    public static final String WEBSERVICE_IMAGE = "http://d554f0481075.ngrok.io/tutor/public/images/";
+    public static final String WEBSERVICE_PATH = "http://5691d29be53c.ngrok.io/tutor/api/";
+    public static final String WEBSERVICE_IMAGE = "http://5691d29be53c.ngrok.io/tutor/public/images/";
     public static final String WEBSERVICE_API_PATH = "api/";
     public static final int Response_OK = 200;
 

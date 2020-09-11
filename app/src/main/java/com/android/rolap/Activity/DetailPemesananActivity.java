@@ -21,7 +21,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class DetailPemesananActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private TextView tvNamaTutor,tvTanggal,tvJam,tvTotal,tvAlamatTutor,tvJenisKelamin,tvTelepon;
+    private TextView tvNamaTutor,tvTanggal,tvJam,tvTotal,tvAlamatTutor,tvJenisKelamin,tvTelepon,tvStatus;
     private Helper helper;
     private PrefManager prefmanager;
     private Button btnHome;
@@ -29,7 +29,7 @@ public class DetailPemesananActivity extends AppCompatActivity implements View.O
     private RelativeLayout progressbar;
     private ImageView ivKembali;
     private Integer intTotal;
-    private String strNamaTutor,strAlamatTutor,strJenisKelaminTutor,strTelepon,strTanggal,strJam,strTotal,strFoto;
+    private String strNamaTutor,strAlamatTutor,strJenisKelaminTutor,strTelepon,strTanggal,strJam,strTotal,strStatus,strFoto;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -49,6 +49,7 @@ public class DetailPemesananActivity extends AppCompatActivity implements View.O
         tvTanggal = findViewById(R.id.tvTanggal);
         tvJam = findViewById(R.id.tvJam);
         tvTotal = findViewById(R.id.tvTotal);
+        tvStatus = findViewById(R.id.tvStatus);
 
         strNamaTutor = getIntent().getStringExtra("nama");
         strAlamatTutor = getIntent().getStringExtra("alamat");
@@ -58,6 +59,7 @@ public class DetailPemesananActivity extends AppCompatActivity implements View.O
         strJam = getIntent().getStringExtra("jam");
         strTotal = getIntent().getStringExtra("harga");
         strFoto = getIntent().getStringExtra("foto");
+        strStatus = getIntent().getStringExtra("status");
         intTotal = getIntent().getIntExtra("total",0);
 
         Log.d("harga",""+strTotal);
@@ -68,6 +70,7 @@ public class DetailPemesananActivity extends AppCompatActivity implements View.O
         tvTelepon.setText(strTelepon);
         tvTanggal.setText(strTanggal);
         tvJam.setText(strJam);
+        tvStatus.setText(helper.convertStatus(strStatus));
         tvTotal.setText("Rp "+Integer.toString(intTotal));
         if(strFoto == ""){
             Glide.with(getApplicationContext()).load(R.drawable.image_profil).into(civTutor);

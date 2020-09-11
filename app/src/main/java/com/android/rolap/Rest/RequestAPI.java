@@ -1,6 +1,7 @@
 package com.android.rolap.Rest;
 
 
+import com.android.rolap.Rest.Response.ResponseBasic;
 import com.android.rolap.Rest.Response.ResponseDaftar;
 import com.android.rolap.Rest.Response.ResponseJadwal;
 import com.android.rolap.Rest.Response.ResponseKategori;
@@ -9,16 +10,21 @@ import com.android.rolap.Rest.Response.ResponseOrder;
 import com.android.rolap.Rest.Response.ResponsePembayaran;
 import com.android.rolap.Rest.Response.ResponsePemesanan;
 import com.android.rolap.Rest.Response.ResponseProfil;
+import com.android.rolap.Rest.Response.ResponseSpa;
+import com.android.rolap.Rest.Response.ResponseSpaSaya;
 import com.android.rolap.Rest.Response.ResponseTutor;
+import com.android.rolap.Rest.Response.ResponseTutorSaya;
 import com.android.rolap.Rest.Response.ResponseUbahPassword;
 import com.android.rolap.Rest.Response.ResponseUsers;
 
 import retrofit2.Call;
+import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface RequestAPI {
@@ -47,6 +53,15 @@ public interface RequestAPI {
     Call<ResponseTutor> getTutor(@Query("apikey") String apikey,
                                  @Query("kid") String kid);
 
+    @GET("spa")
+    Call<ResponseSpa> getSpa(@Query("apikey") String apikey);
+
+    @GET("tutor/tutor_saya")
+    Call<ResponseTutorSaya> getTutorSaya(@Query("apikey") String apikey);
+
+    @GET("spa/spa_saya")
+    Call<ResponseSpaSaya> getSpaSaya(@Query("apikey") String apikey);
+
     @GET("pembayaran")
     Call<ResponsePembayaran> getPembayaran(@Query("apikey") String apikey);
 
@@ -71,6 +86,16 @@ public interface RequestAPI {
                                   @Field("alamat") String alamat,
                                   @Field("jenis_kelamin") String jenis_kelamin,
                                   @Field("telepon") String telepon);
+
+    @FormUrlEncoded
+    @POST("tutor/delete")
+    Call<ResponseBasic> deleteTutor(@Field("apikey") String apikey,
+                                    @Field("tid") String tid);
+
+    @FormUrlEncoded
+    @POST("spa/delete")
+    Call<ResponseBasic> deleteSpa(@Field("apikey") String apikey,
+                                    @Field("sid") String sid);
 
     @FormUrlEncoded
     @PUT("users/ubah_password")

@@ -4,21 +4,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvKategori"
+    <ImageView
+        android:id="@+id/homeLogo"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
+        android:layout_height="wrap_content"
+        android:scaleType="fitCenter"
+        android:layout_centerInParent="true"
+        android:src="@drawable/image_splash_screen"
+        />
     <TextView
-        android:id="@+id/tvNoData"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorAccent"
+        android:layout_height="wrap_content"
+        android:text="Selamat Datang di Aplikasi ROLap"
+        android:layout_below="@+id/homeLogo"
         android:gravity="center"
-        android:text="@string/no_data_found"
-        android:textColor="@color/colorBlack"
+        android:layout_centerInParent="true"
         android:textSize="20sp"
-        android:visibility="gone" />
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"
+        android:fontFamily="@font/segoe_ui_bold"
+        />
 
     <include layout="@layout/layout_progressbar"/>
 

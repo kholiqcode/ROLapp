@@ -12,6 +12,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.rolap.Helper.Constant;
+import com.android.rolap.Helper.Helper;
 import com.android.rolap.R;
 import com.android.rolap.Rest.Response.ResponseOrder;
 import com.android.rolap.Rest.Response.ResponseTutor;
@@ -26,6 +27,7 @@ public class OrderAdapter extends RecyclerView.Adapter {
     private List<ResponseOrder.Data> orderList;
     private Context mContext;
     private OrderAdapter.OnDetailsClick onDetailClick;
+    private Helper helper;
 
     public OrderAdapter(Context mContext, List<ResponseOrder.Data> order){
         this.mContext = mContext;
@@ -41,8 +43,12 @@ public class OrderAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
+
+        helper = new Helper(this.mContext);
+
         OrderAdapter.OrderViewHolder holder = (OrderAdapter.OrderViewHolder) viewHolder;
         holder.tvNamaTutor.setText(orderList.get(position).nama);
+        holder.tvStatus.setText(helper.convertStatus(orderList.get(position).status));
         holder.tvTanggal.setText(orderList.get(position).tanggal);
         holder.cvOrder.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,13 +78,14 @@ public class OrderAdapter extends RecyclerView.Adapter {
 
     public class OrderViewHolder extends RecyclerView.ViewHolder {
 
-        TextView tvNamaTutor, tvTanggal;
+        TextView tvNamaTutor,tvStatus, tvTanggal;
         CardView cvOrder;
         CircleImageView civTutor;
 
         public OrderViewHolder(View v) {
             super(v);
             tvNamaTutor = itemView.findViewById(R.id.tvNamaTutor);
+            tvStatus = itemView.findViewById(R.id.tvStatus);
             tvTanggal = itemView.findViewById(R.id.tvTanggal);
             cvOrder = itemView.findViewById(R.id.cvOrder);
             civTutor =  itemView.findViewById(R.id.civTutor);

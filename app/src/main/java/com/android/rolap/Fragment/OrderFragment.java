@@ -107,6 +107,7 @@ public class OrderFragment extends Fragment {
                             intent.putExtra("tanggal", orderList.get(position).tanggal);
                             intent.putExtra("jam", orderList.get(position).waktu);
                             intent.putExtra("total", orderList.get(position).total);
+                            intent.putExtra("status", orderList.get(position).status);
                             intent.putExtra("foto", orderList.get(position).foto);
                             ActivityOptions options = ActivityOptions.makeCustomAnimation(getActivity(), R.anim.anim_left, R.anim.anim_right);
                             startActivity(intent, options.toBundle());

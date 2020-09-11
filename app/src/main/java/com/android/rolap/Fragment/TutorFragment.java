@@ -65,14 +65,14 @@ public class TutorFragment extends Fragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         rvTutor.setLayoutManager(layoutManager);
         if (helper.isOnline()) {
-            getKategoriList();
+            getTutorList();
         } else {
             helper.showToast(getString(R.string.msgNoCennection));
         }
         return view;
     }
 
-    public void getKategoriList() {
+    public void getTutorList() {
         progressbar.setVisibility(View.VISIBLE);
         RequestAPI rolapAPI = RestApi.createAPI();
         String kid = getArguments().getString(KID);

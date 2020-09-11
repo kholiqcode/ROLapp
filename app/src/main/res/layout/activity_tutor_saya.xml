@@ -41,6 +41,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/llBottom"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/llActionBar"
@@ -48,12 +49,14 @@
         tools:ignore="UnknownId">
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvTutorSaya"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="5dp"
             android:background="@android:color/transparent" />
 
         <TextView
+            android:id="@+id/tvNoData"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
@@ -63,6 +66,6 @@
             android:visibility="gone" />
     </LinearLayout>
 
-<!--    <include layout="@layout/layout_progressbar"/>-->
+    <include layout="@layout/layout_progressbar"/>
 
 </RelativeLayout>

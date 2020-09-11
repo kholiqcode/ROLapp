@@ -1,5 +1,7 @@
 package com.android.rolap.Activity;
 
+import android.app.ActivityOptions;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -45,9 +47,9 @@ public class SpaActivity extends AppCompatActivity implements View.OnClickListen
                 onBackPressed();
                 break;
             case R.id.rlSpaSaya:
-//                Intent intent = new Intent(this, PembayaranActivity.class);
-//                ActivityOptions options = ActivityOptions.makeCustomAnimation(this, R.anim.anim_left, R.anim.anim_right);
-//                startActivity(intent, options.toBundle());
+                Intent intent = new Intent(this, SpaSayaActivity.class);
+                ActivityOptions options = ActivityOptions.makeCustomAnimation(this, R.anim.anim_left, R.anim.anim_right);
+                startActivity(intent, options.toBundle());
                 break;
             case R.id.rlTambahSpa:
 //                Intent intent = new Intent(this, PembayaranActivity.class);

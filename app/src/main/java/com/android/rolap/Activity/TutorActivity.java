@@ -47,9 +47,9 @@ public class TutorActivity extends AppCompatActivity implements View.OnClickList
                 onBackPressed();
                 break;
             case R.id.rlTutorSaya:
-//                Intent intent = new Intent(this, PembayaranActivity.class);
-//                ActivityOptions options = ActivityOptions.makeCustomAnimation(this, R.anim.anim_left, R.anim.anim_right);
-//                startActivity(intent, options.toBundle());
+                Intent intent = new Intent(this, TutorSayaActivity.class);
+                ActivityOptions options = ActivityOptions.makeCustomAnimation(this, R.anim.anim_left, R.anim.anim_right);
+                startActivity(intent, options.toBundle());
                 break;
             case R.id.rlTambahTutor:
 //                Intent intent = new Intent(this, PembayaranActivity.class);

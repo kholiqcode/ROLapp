@@ -11,13 +11,14 @@
         android:layout_height="100dp">
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/cvOrder"
+            android:id="@+id/cvSpaSaya"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_centerInParent="true"
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
             app:cardCornerRadius="20dp"
+            app:cardBackgroundColor="@color/colorBlue"
             app:cardElevation="3dp">
 
             <LinearLayout
@@ -29,37 +30,26 @@
                 android:layout_marginLeft="50dp">
 
                 <TextView
-                    android:id="@+id/tvNamaTutor"
+                    android:id="@+id/tvNamaSpa"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="5dp"
+                    android:layout_gravity="top"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/opensanssemibold"
                     android:textColor="@color/colorBlack"
                     android:textSize="16sp"
-                    tools:text="Rino Ahmad" />
+                    tools:text="RENANG by RANI AYU" />
 
                 <TextView
-                    android:id="@+id/tvStatus"
+                    android:id="@+id/tvTotalTransaksi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/opensansbold"
-                    android:text="Dibayar"
+                    android:text="8 Transaksi Sukses"
                     android:textColor="@color/colorBlack"
                     android:textSize="16dp" />
-
-                <TextView
-                    android:id="@+id/tvTanggal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/opensansregular"
-                    android:text="18 Agustus 2020"
-                    android:layout_marginTop="10dp"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="14dp"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
     </RelativeLayout>
@@ -69,12 +59,13 @@
         android:layout_height="100dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/civTutor"
+            android:id="@+id/civSpa"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_centerInParent="true"
             android:layout_gravity="center"
             android:layout_margin="5dp"
+            android:layout_toLeftOf="@+id/tvMenuTitle"
             android:background="@drawable/shape_rounded_elevation"
             android:elevation="5dp"
             android:src="@drawable/image_user"
@@ -89,21 +80,37 @@
         android:layout_height="100dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/ivMenuDetail"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_alignParentEnd="true"
+            android:id="@+id/civEditSpa"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_centerInParent="true"
             android:layout_gravity="center"
-            android:layout_margin="10dp"
             android:background="@android:color/transparent"
-            android:src="@drawable/ic_navigate_next"
+            android:src="@drawable/ic_edit"
             android:visibility="visible"
             app:civ_border_color="@color/colorWhite"
             app:civ_border_width="0dp"
             tools:ignore="NotSibling"
             android:elevation="3dp"
-            app:civ_circle_background_color="@color/colorBlue"
+            android:layout_toLeftOf="@id/civDeleteSpa"
+            app:civ_circle_background_color="@color/colorWhiteGrey" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/civDeleteSpa"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:layout_margin="15dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_delete"
+            android:visibility="visible"
+            app:civ_border_color="@color/colorWhite"
+            app:civ_border_width="0dp"
+            tools:ignore="NotSibling"
+            android:elevation="3dp"
+            app:civ_circle_background_color="@color/colorWhiteGrey"
             android:layout_alignParentRight="true" />
     </RelativeLayout>
 

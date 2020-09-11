@@ -22,7 +22,7 @@ public class ResponseOrder {
         public String metode_pembayaran;
         public String tanggal;
         public String waktu;
-        public int status;
+        public String status;
         public int total;
         public String foto;
     }
