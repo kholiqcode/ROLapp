@@ -200,7 +200,7 @@ class Tutor extends RestController
                 'field' => 'harga',
                 'label'    => 'Harga',
                 'rules'    => 'trim|required|integer',
-            ],
+            ]
         ];
 
         $res = validateReq($validationRules);

@@ -33,9 +33,9 @@ class Users extends RestController {
         }
     }
 
-    public function index_put()
+    public function edit_post()
     {
-        $input = $this->put();
+        $input = $this->post();
 
         
         if (!$this->validatePut($input)) {

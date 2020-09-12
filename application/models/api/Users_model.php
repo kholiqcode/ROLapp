@@ -17,12 +17,26 @@ class Users_model extends CI_Model
     public function putUsers($input)
     {
         $uid = $this->token->decrypt($input['apikey']);
+        
+        if (!empty($_FILES) && $_FILES['foto']['name'] !== '') {
+
+            $imageName    = url_title($uid, '-', true) . date('YmdHis');
+
+            $upload = $this->uploadFoto('foto', $imageName);
+
+            if ($upload) {
+                $foto    = $upload['file_name'];
+            } else {
+                return false;
+            }
+        }
 
         $data        = [
             'nama'        => $input['nama'],
             'jenis_kelamin'    => $input['jenis_kelamin'],
             'alamat'    => $input['alamat'],
             'telepon'        => $input['telepon'],
+            'foto'        => $foto
         ];
 
         $this->db->where('id', $uid)->update($this->table, $data);
@@ -55,6 +69,28 @@ class Users_model extends CI_Model
         }
 
         return false;
+    }
+
+    public function uploadFoto($fieldName, $fileName)
+    {
+        $config    = [
+            'upload_path'        => './public/images/users',
+            'file_name'            => $fileName,
+            'allowed_types'        => 'jpg|gif|png|jpeg|JPG|PNG',
+            'max_size'            => 1024,
+            'max_width'            => 0,
+            'max_height'        => 0,
+            'overwrite'            => true,
+            'file_ext_tolower'    => true
+        ];
+
+        $this->load->library('upload', $config);
+
+        if ($this->upload->do_upload($fieldName)) {
+            return $this->upload->data();
+        } else {
+            return false;
+        }
     }
 }
 
