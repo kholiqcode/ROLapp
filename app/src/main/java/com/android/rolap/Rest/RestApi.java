@@ -36,6 +36,7 @@ public class RestApi {
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient.Builder client = new OkHttpClient.Builder();
         client.readTimeout(60, TimeUnit.SECONDS);
+        client.writeTimeout(1, TimeUnit.MINUTES);
         client.connectTimeout(60, TimeUnit.SECONDS);
         if (BuildConfig.DEBUG)
             client.addInterceptor(logging);

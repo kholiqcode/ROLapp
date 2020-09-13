@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ImageView
+        android:id="@+id/ivBack"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp"
+        app:srcCompat="@drawable/ic_navigate_before"
+        android:layout_marginStart="5dp"
+        android:layout_alignParentStart="true"
+        android:contentDescription="Detail Pemesanan"
+        android:layout_marginLeft="5dp"
+        android:layout_alignParentLeft="true" />
+
+    <TextView
+        android:id="@+id/tvDetailTutor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Detail Tutor Saya"
+        android:fontFamily="sans-serif-black"
+        android:textSize="30sp"
+        android:textColor="@color/colorBlack"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/ivBack"
+        android:layout_marginStart="10dp"
+        android:layout_toRightOf="@+id/ivBack"
+        android:layout_marginLeft="10dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:orientation="horizontal"
+        android:layout_below="@+id/tvDetailTutor"
+        android:background="@drawable/shape_rectangle_bottom_rounded_blue"
+        android:id="@+id/llTop"
+        >
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/civTutor"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:src="@drawable/image_profil"
+            app:civ_border_width="2dp"
+            app:civ_border_color="#FF000000"
+            android:layout_marginLeft="25dp"
+            android:layout_gravity="center"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:orientation="vertical"
+            android:paddingRight="20dp">
+
+            <TextView
+                android:id="@+id/tvNamaTutor"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:textSize="25sp"
+                app:autoSizeTextType="uniform"
+                android:maxLines="2"
+                android:textColor="@color/colorBlack"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:textStyle="bold"
+                tools:text="Donny Pratama"/>
+
+            <RatingBar
+                android:id="@+id/rbTutor"
+                style="?android:attr/ratingBarStyleIndicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_gravity="center"
+                android:clickable="false"
+                android:isIndicator="true"
+                android:numStars="5"
+                android:stepSize="0.1"
+                android:theme="@style/RatingBar"/>
+
+            <TextView
+                android:id="@+id/tvHargaTutor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Rp 150000"
+                android:textSize="22sp"
+                android:textColor="@color/colorWhite"
+                android:layout_marginTop="18dp"
+                android:gravity="center"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_profil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@+id/llTop"
+        android:layout_marginTop="30dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Alamat :"
+                android:textSize="18sp"
+                android:layout_marginHorizontal="10dp"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/tvAlamatTutor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Jl A Yani 6 Link Kepatihan"
+                android:textSize="16sp"
+                android:layout_marginHorizontal="10dp"
+                android:maxLines="3"
+                android:textColor="@color/colorBlack"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/colorBlue"
+            android:layout_marginTop="20dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Jenis Kelamin :"
+                android:textSize="18sp"
+                android:layout_marginHorizontal="10dp"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/tvJenisKelamin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Laki-laki"
+                android:layout_marginHorizontal="10dp"
+                android:textSize="16sp"
+                android:maxLines="3"
+                android:textColor="@color/colorWhite"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nomor Telepon :"
+                android:textSize="18sp"
+                android:layout_marginHorizontal="10dp"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/tvTelepon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="089647583033"
+                android:textSize="16sp"
+                android:layout_marginHorizontal="10dp"
+                android:maxLines="3"
+                android:textColor="@color/colorBlack"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/colorBlue"
+            android:layout_marginTop="20dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Total Transaksi :"
+                android:textSize="18sp"
+                android:layout_marginHorizontal="10dp"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/tvTotalTransaksi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="8 Transaksi"
+                android:layout_marginHorizontal="10dp"
+                android:textSize="16sp"
+                android:maxLines="3"
+                android:textColor="@color/colorWhite"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <include layout="@layout/layout_progressbar" />
+
+</RelativeLayout>

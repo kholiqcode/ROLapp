@@ -21,6 +21,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.android.rolap.R;
 
 import java.io.UnsupportedEncodingException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class Helper {
     private static final String TAG = Helper.class.getSimpleName();
@@ -95,6 +98,16 @@ public class Helper {
         } catch (Exception e) {
             e.printStackTrace();
             return false;
+        }
+    }
+
+    public static String getCurrentDateTimeMix() {
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss", Locale.getDefault());
+            return sdf.format(new Date());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "0000-00-00 00:00:00";
         }
     }
 

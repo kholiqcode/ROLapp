@@ -48,4 +48,6 @@
     <string name="hint_alamat">Masukkan alamat anda</string>
     <string name="pilih_pembayaran">Pilih Metode Pembayaran</string>
     <string name="hint_tutor">Masukkan nama tutor</string>
+    <string name="pilih_gambar">Pilih Gambar Dari</string>
+    <string name="profile_pic_open_gallary_title">Choose a Picture from</string>
 </resources>

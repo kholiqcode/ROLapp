@@ -116,9 +116,16 @@ public class SpaSayaActivity extends AppCompatActivity implements View.OnClickLi
                     spaSayaAdapter.setOnDetailClick(new SpaSayaAdapter.OnDetailsClick() {
                         @Override
                         public void onDetailClick(int position) {
-                            Intent intent = new Intent(SpaSayaActivity.this, DetailJadwalActivity.class);
-                            intent.putExtra("pid", spasayaList.get(position).id);
-                            intent.putExtra("nama_tutor", spasayaList.get(position).nama);
+                            Intent intent = new Intent(SpaSayaActivity.this, DetailSpaSayaActivity.class);
+                            intent.putExtra("tid", spasayaList.get(position).id);
+                            intent.putExtra("nama", spasayaList.get(position).nama);
+                            intent.putExtra("alamat", spasayaList.get(position).alamat);
+                            intent.putExtra("jenis_kelamin", spasayaList.get(position).jenis_kelamin);
+                            intent.putExtra("telepon", spasayaList.get(position).telepon);
+                            intent.putExtra("harga", spasayaList.get(position).harga);
+                            intent.putExtra("total_trx", spasayaList.get(position).total_trx);
+                            intent.putExtra("rate_avg", spasayaList.get(position).rate_avg);
+                            intent.putExtra("foto", spasayaList.get(position).foto);
                             ActivityOptions options = ActivityOptions.makeCustomAnimation(SpaSayaActivity.this, R.anim.slide_in, R.anim.slide_out);
                             startActivity(intent, options.toBundle());
 

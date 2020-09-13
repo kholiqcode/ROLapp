@@ -99,9 +99,16 @@ public class TutorSayaActivity extends AppCompatActivity implements View.OnClick
                     tutorSayaAdapter.setOnDetailClick(new TutorSayaAdapter.OnDetailsClick() {
                         @Override
                         public void onDetailClick(int position) {
-                            Intent intent = new Intent(TutorSayaActivity.this, DetailJadwalActivity.class);
-                            intent.putExtra("pid", tutorsayaList.get(position).id);
-                            intent.putExtra("nama_tutor", tutorsayaList.get(position).nama);
+                            Intent intent = new Intent(TutorSayaActivity.this, DetailTutorSayaActivity.class);
+                            intent.putExtra("tid", tutorsayaList.get(position).id);
+                            intent.putExtra("nama", tutorsayaList.get(position).nama);
+                            intent.putExtra("alamat", tutorsayaList.get(position).alamat);
+                            intent.putExtra("jenis_kelamin", tutorsayaList.get(position).jenis_kelamin);
+                            intent.putExtra("telepon", tutorsayaList.get(position).telepon);
+                            intent.putExtra("harga", tutorsayaList.get(position).harga);
+                            intent.putExtra("total_trx", tutorsayaList.get(position).total_trx);
+                            intent.putExtra("rate_avg", tutorsayaList.get(position).rate_avg);
+                            intent.putExtra("foto", tutorsayaList.get(position).foto);
                             ActivityOptions options = ActivityOptions.makeCustomAnimation(TutorSayaActivity.this, R.anim.slide_in, R.anim.slide_out);
                             startActivity(intent, options.toBundle());
 

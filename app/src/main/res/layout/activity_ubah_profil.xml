@@ -43,7 +43,7 @@
         android:layout_centerHorizontal="true"
         >
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/civProfil"
+            android:id="@+id/civUsers"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@drawable/image_profil"
@@ -57,12 +57,12 @@
             app:srcCompat="@drawable/ic_camera"
             android:layout_gravity="center"
             android:layout_marginStart="-30dp"
-            android:layout_alignBottom="@id/civProfil"
-            android:layout_toEndOf="@+id/civProfil"
-            android:contentDescription="civProfil"
+            android:layout_alignBottom="@id/civUsers"
+            android:layout_toEndOf="@+id/civUsers"
+            android:contentDescription="civUsers"
             tools:ignore="VectorDrawableCompat"
             android:layout_marginLeft="-30dp"
-            android:layout_toRightOf="@+id/civProfil" />
+            android:layout_toRightOf="@+id/civUsers" />
 
     </RelativeLayout>
 
