@@ -12,14 +12,28 @@ class Spa_model extends CI_Model
 
         $uid = $this->token->decrypt($input['apikey']);
 
-        $data        = [
-            'id_users'        => $uid,
-            'id_kategori'        => $input['kid'],
-            'nama'        => $input['nama'],
-            'alamat'    => $input['alamat'],
-            'harga'        => $input['harga'],
-            'role'        => 1
-        ];
+        $foto =  base64_decode($input['foto']);
+
+        $imageName = url_title($uid, '-', true) . date('YmdHis').'.jpg';
+
+        $success = file_put_contents('./public/images/spa/'.url_title($uid, '-', true) . date('YmdHis').'.jpg',$foto);
+
+        if ($success) {
+            $data        = [
+                'id_users'        => $uid,
+                'nama'        => $input['nama'],
+                'alamat'    => $input['alamat'],
+                'harga'        => $input['harga'],
+                'total_trx'        => 0,
+                'total_rate'        => 0,
+                'rate_avg'        => 0,
+                'role'        => 1,
+                'foto'      => $imageName
+            ];
+    
+        } else {
+            return false;
+        }
 
         $this->db->insert($this->table, $data);
         return $this->db->insert_id();

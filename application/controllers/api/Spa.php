@@ -182,11 +182,6 @@ class Spa extends RestController
     {
         $validationRules = [
             [
-                'field'    => 'kid',
-                'label'    => 'Kategori Id',
-                'rules'    => 'trim|required|integer'
-            ],
-            [
                 'field'     => 'nama',
                 'label'        => 'Nama',
                 'rules'        => 'trim|required'

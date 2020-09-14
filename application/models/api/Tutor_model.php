@@ -11,33 +11,31 @@ class Tutor_model extends CI_Model
     {
 
         $uid = $this->token->decrypt($input['apikey']);
-        
-        if (!empty($_FILES) && $_FILES['foto']['name'] !== '') {
 
-            $imageName    = url_title($uid, '-', true) . date('YmdHis');
+        $foto =  base64_decode($input['foto']);
 
-            $upload = $this->uploadFoto('foto', $imageName);
+        $imageName = url_title($uid, '-', true) . date('YmdHis').'.jpg';
 
-            if ($upload) {
-                $foto    = $upload['file_name'];
-            } else {
-                return false;
-            }
+        $success = file_put_contents('./public/images/tutor/'.url_title($uid, '-', true) . date('YmdHis').'.jpg',$foto);
+
+        if ($success) {
+            $data        = [
+                'id_users'        => $uid,
+                'id_kategori'        => $input['kid'],
+                'nama'        => $input['nama'],
+                'alamat'    => $input['alamat'],
+                'harga'        => $input['harga'],
+                'total_trx'        => 0,
+                'total_rate'        => 0,
+                'rate_avg'        => 0,
+                'role'        => 0,
+                'foto'      => $imageName
+            ];
+    
+        } else {
+            return false;
         }
-
-        $data        = [
-            'id_users'        => $uid,
-            'id_kategori'        => $input['kid'],
-            'nama'        => $input['nama'],
-            'alamat'    => $input['alamat'],
-            'harga'        => $input['harga'],
-            'total_trx'        => 0,
-            'total_rate'        => 0,
-            'rate_avg'        => 0,
-            'role'        => 0,
-            'foto'      => $foto
-        ];
-
+        
         $this->db->insert($this->table, $data);
         return $this->db->insert_id();
     }
@@ -93,27 +91,6 @@ class Tutor_model extends CI_Model
         return $query;
     }
 
-    public function uploadFoto($fieldName, $fileName)
-    {
-        $config    = [
-            'upload_path'        => './public/images/tutor',
-            'file_name'            => $fileName,
-            'allowed_types'        => 'jpg|gif|png|jpeg|JPG|PNG',
-            'max_size'            => 1024,
-            'max_width'            => 0,
-            'max_height'        => 0,
-            'overwrite'            => true,
-            'file_ext_tolower'    => true
-        ];
-
-        $this->load->library('upload', $config);
-
-        if ($this->upload->do_upload($fieldName)) {
-            return $this->upload->data();
-        } else {
-            return false;
-        }
-    }
 }
 
 /* End of file Tutor_model.php */

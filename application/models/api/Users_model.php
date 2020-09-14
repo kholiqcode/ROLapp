@@ -17,27 +17,24 @@ class Users_model extends CI_Model
     public function putUsers($input)
     {
         $uid = $this->token->decrypt($input['apikey']);
+
+        $foto =  base64_decode($input['foto']);
+
+        $imageName = url_title($uid, '-', true) . date('YmdHis').'.jpg';
+
+        $success = file_put_contents('./public/images/users/'.url_title($uid, '-', true) . date('YmdHis').'.jpg',$foto);
         
-        if (!empty($_FILES) && $_FILES['foto']['name'] !== '') {
-
-            $imageName    = url_title($uid, '-', true) . date('YmdHis');
-
-            $upload = $this->uploadFoto('foto', $imageName);
-
-            if ($upload) {
-                $foto    = $upload['file_name'];
-            } else {
-                return false;
-            }
+        if ($success) {
+            $data        = [
+                'nama'        => $input['nama'],
+                'jenis_kelamin'    => $input['jenis_kelamin'],
+                'alamat'    => $input['alamat'],
+                'telepon'        => $input['telepon'],
+                'foto'        => $imageName
+            ];
+        } else {
+            return false;
         }
-
-        $data        = [
-            'nama'        => $input['nama'],
-            'jenis_kelamin'    => $input['jenis_kelamin'],
-            'alamat'    => $input['alamat'],
-            'telepon'        => $input['telepon'],
-            'foto'        => $foto
-        ];
 
         $this->db->where('id', $uid)->update($this->table, $data);
 
