@@ -67,7 +67,7 @@ public class DetailTutorSayaActivity extends AppCompatActivity implements View.O
         if(strFoto == "" || strFoto.isEmpty()){
             Glide.with(getApplicationContext()).load(R.drawable.image_profil).into(civTutor);
         }else{
-            Glide.with(getApplicationContext()).load(Constant.WEBSERVICE_IMAGE+strFoto).into(civTutor);
+            Glide.with(getApplicationContext()).load(Constant.WEBSERVICE_IMAGE+"tutor/"+strFoto).into(civTutor);
         }
 
         ivKembali.setOnClickListener(this);

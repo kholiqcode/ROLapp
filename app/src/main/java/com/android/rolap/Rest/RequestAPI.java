@@ -12,6 +12,8 @@ import com.android.rolap.Rest.Response.ResponsePemesanan;
 import com.android.rolap.Rest.Response.ResponseProfil;
 import com.android.rolap.Rest.Response.ResponseSpa;
 import com.android.rolap.Rest.Response.ResponseSpaSaya;
+import com.android.rolap.Rest.Response.ResponseTambahSpa;
+import com.android.rolap.Rest.Response.ResponseTambahTutor;
 import com.android.rolap.Rest.Response.ResponseTutor;
 import com.android.rolap.Rest.Response.ResponseTutorSaya;
 import com.android.rolap.Rest.Response.ResponseUbahPassword;
@@ -94,6 +96,24 @@ public interface RequestAPI {
                                   @Part("jenis_kelamin") RequestBody jenis_kelamin,
                                   @Part("telepon") RequestBody telepon,
                                   @Part("foto") RequestBody foto);
+
+    @FormUrlEncoded
+    @POST(WEBSERVICE_PATH+WEBSERVICE_API_PATH+"tutor")
+    Call<ResponseTambahTutor> postTambahTutor(@Field("apikey") String apikey,
+                                              @Field("kid") String kid,
+                                              @Field("nama") String nama,
+                                              @Field("alamat") String alamat,
+                                              @Field("harga") String harga,
+                                              @Field("foto") String foto);
+
+    @FormUrlEncoded
+    @POST(WEBSERVICE_PATH+WEBSERVICE_API_PATH+"spa")
+    Call<ResponseTambahSpa> postTambahSpa(@Field("apikey") String apikey,
+                                          @Field("nama") String nama,
+                                          @Field("alamat") String alamat,
+                                          @Field("harga") String harga,
+                                          @Field("foto") String foto);
+
 
     @FormUrlEncoded
     @POST(WEBSERVICE_PATH+WEBSERVICE_API_PATH+"tutor/delete")

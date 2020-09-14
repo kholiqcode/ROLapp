@@ -57,7 +57,7 @@ public class TutorAdapter extends RecyclerView.Adapter {
         if(tutorList.get(position).foto == ""){
             Glide.with(mContext).load(R.drawable.image_profil).into(holder.civTutor);
         }else{
-            Glide.with(mContext).load(Constant.WEBSERVICE_IMAGE+tutorList.get(position).foto).into(holder.civTutor);
+            Glide.with(mContext).load(Constant.WEBSERVICE_IMAGE+"tutor/"+tutorList.get(position).foto).into(holder.civTutor);
         }
     }
 

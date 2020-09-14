@@ -5,4 +5,8 @@
         <item>Gallery</item>
         <item>Camera</item>
     </string-array>
+
+    <string-array name="kategori">
+        <item>Pilih Kategori</item>
+    </string-array>
 </resources>

@@ -28,7 +28,7 @@
             android:id="@+id/tvSpa"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Tambah Tutor"
+            android:text="Tambah Spa"
             android:fontFamily="sans-serif-black"
             android:textSize="30sp"
             android:textColor="@color/colorBlack"
@@ -56,7 +56,7 @@
             android:layout_gravity="center"
             >
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/civTutor"
+                android:id="@+id/civSpa"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@drawable/image_profil"
@@ -70,54 +70,14 @@
                 app:srcCompat="@drawable/ic_camera"
                 android:layout_gravity="center"
                 android:layout_marginStart="-30dp"
-                android:layout_alignBottom="@id/civTutor"
-                android:layout_toEndOf="@+id/civTutor"
-                android:contentDescription="civTutor"
+                android:layout_alignBottom="@id/civSpa"
+                android:layout_toEndOf="@+id/civSpa"
+                android:contentDescription="civSpa"
                 android:layout_marginLeft="-30dp"
-                android:layout_toRightOf="@+id/civTutor" />
+                android:layout_toRightOf="@+id/civSpa" />
 
         </RelativeLayout>
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            app:cardCornerRadius="27.5dp"
-            app:cardElevation="4dp"
-            android:layout_marginTop="50dp">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/kategori_label"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Kategori"
-                    android:textSize="16sp"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginHorizontal="25dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentLeft="true" />
-
-                <Spinner
-                    android:id="@+id/SpinKategori"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:prompt="@string/simpan"
-                    android:entries="@array/kategori"
-                    android:spinnerMode="dropdown"
-                    android:background="@drawable/selector_spinner"
-                    android:layout_marginHorizontal="25dp"
-                    android:layout_marginVertical="3dp"
-                    android:layout_centerInParent="true"
-                    android:layout_below="@id/kategori_label"
-                    android:layout_centerVertical="true"/>
-
-
-            </RelativeLayout>
-        </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="60dp"
@@ -130,10 +90,10 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/tvNamaTutor"
+                    android:id="@+id/tvNamaSpa"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Nama Tutor"
+                    android:text="Nama Spa"
                     android:textSize="16sp"
                     android:layout_alignParentTop="true"
                     android:layout_marginHorizontal="25dp"
@@ -149,8 +109,8 @@
                     android:textSize="18sp"
                     android:layout_marginHorizontal="25dp"
                     android:layout_marginVertical="3dp"
-                    android:layout_below="@id/tvNamaTutor"
-                    android:hint="@string/hint_tutor"/>
+                    android:layout_below="@id/tvNamaSpa"
+                    android:hint="@string/hint_spa"/>
 
             </RelativeLayout>
 
@@ -168,10 +128,10 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/tvAlamatTutor"
+                    android:id="@+id/tvAlamatSpa"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Alamat Tutor"
+                    android:text="Alamat Spa"
                     android:textSize="16sp"
                     android:layout_alignParentTop="true"
                     android:layout_marginHorizontal="25dp"
@@ -187,8 +147,8 @@
                     android:textSize="18sp"
                     android:layout_marginHorizontal="25dp"
                     android:layout_marginVertical="3dp"
-                    android:layout_below="@id/tvAlamatTutor"
-                    android:hint="@string/hint_alamat_tutor"/>
+                    android:layout_below="@id/tvAlamatSpa"
+                    android:hint="@string/hint_alamat_spa"/>
 
             </RelativeLayout>
 
@@ -206,7 +166,7 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/tvHargaTutor"
+                    android:id="@+id/tvHargaSpa"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Harga"
@@ -226,8 +186,8 @@
                     android:inputType="numberDecimal"
                     android:layout_marginHorizontal="25dp"
                     android:layout_marginVertical="3dp"
-                    android:layout_below="@id/tvHargaTutor"
-                    android:hint="@string/hint_harga_tutor"/>
+                    android:layout_below="@id/tvHargaSpa"
+                    android:hint="@string/hint_harga_spa"/>
 
             </RelativeLayout>
 
@@ -240,7 +200,7 @@
             android:layout_marginTop="20dp"
             android:layout_gravity="center"
             android:elevation="3dp"
-            android:text="@string/TambahTutor"
+            android:text="@string/TambahSpa"
             android:clickable="true"
             android:textSize="24sp"
             android:textStyle="bold"

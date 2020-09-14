@@ -52,9 +52,9 @@ public class SpaActivity extends AppCompatActivity implements View.OnClickListen
                 startActivity(intent, options.toBundle());
                 break;
             case R.id.rlTambahSpa:
-//                Intent intent = new Intent(this, PembayaranActivity.class);
-//                ActivityOptions options = ActivityOptions.makeCustomAnimation(this, R.anim.anim_left, R.anim.anim_right);
-//                startActivity(intent, options.toBundle());
+                Intent intent1 = new Intent(this, TambahSpaActivity.class);
+                ActivityOptions options1 = ActivityOptions.makeCustomAnimation(this, R.anim.anim_left, R.anim.anim_right);
+                startActivity(intent1, options1.toBundle());
                 break;
         }
     }

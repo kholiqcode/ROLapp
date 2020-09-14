@@ -60,7 +60,7 @@ public class SpaSayaAdapter extends RecyclerView.Adapter {
         if(spasayaList.get(position).foto == ""){
             Glide.with(mContext).load(R.drawable.image_profil).into(holder.civTutor);
         }else{
-            Glide.with(mContext).load(Constant.WEBSERVICE_IMAGE+spasayaList.get(position).foto).into(holder.civTutor);
+            Glide.with(mContext).load(Constant.WEBSERVICE_IMAGE+"spa/"+spasayaList.get(position).foto).into(holder.civTutor);
         }
     }
 

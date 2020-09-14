@@ -102,7 +102,7 @@ public class DetailSpaActivity extends AppCompatActivity implements View.OnClick
         if(strFoto == ""){
             Glide.with(getApplicationContext()).load(R.drawable.image_profil).into(civSpa);
         }else{
-            Glide.with(getApplicationContext()).load(Constant.WEBSERVICE_IMAGE+strFoto).into(civSpa);
+            Glide.with(getApplicationContext()).load(Constant.WEBSERVICE_IMAGE+"spa/"+strFoto).into(civSpa);
         }
 
         btnPesan.setOnClickListener(this);

@@ -67,7 +67,7 @@ public class DetailSpaSayaActivity extends AppCompatActivity implements View.OnC
         if(strFoto == "" || strFoto.isEmpty()){
             Glide.with(getApplicationContext()).load(R.drawable.image_profil).into(civSpa);
         }else{
-            Glide.with(getApplicationContext()).load(Constant.WEBSERVICE_IMAGE+strFoto).into(civSpa);
+            Glide.with(getApplicationContext()).load(Constant.WEBSERVICE_IMAGE+"spa/"+strFoto).into(civSpa);
         }
 
         ivKembali.setOnClickListener(this);
