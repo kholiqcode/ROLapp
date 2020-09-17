@@ -308,3 +308,4 @@
         "use strict";
         $.SweetAlert.init()
     }(window.jQuery);
+    

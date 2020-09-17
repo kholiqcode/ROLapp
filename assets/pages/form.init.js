@@ -45,6 +45,23 @@
                 }
             })
 
+            
+        //onload kategori
+        $.get('http://localhost/tutor/admin/kategori/get')
+        .done(function (data) {
+            var obj = JSON.parse(data);
+            var len = obj.length;
+            $("#select-kategori").empty();
+            $("#select-kategori").append("<option value='default' disabled selected>Pilih Kategori</option>");
+            for (var i = 0; i < len; i++) {
+                var id = obj[i]['id'];
+                var name = obj[i]['nama'];
+
+                $("#select-kategori").append("<option value='" + id + "'>" + name + "</option>");
+
+            }
+        })
+
         //onload Pembayaran
         $.get('http://localhost/tutor/admin/pembayaran/get')
             .done(function (data) {
@@ -84,12 +101,12 @@
             }
         });
 
-        $("#select-prodi").change(function () {
-            $('#prodi-preview').text($("#select-prodi option:selected").text());
+        $("#select-kategori").change(function () {
+            $('#prodi-preview').text($("#select-kategori option:selected").text());
         });
 
-        $("#nama-kandidat").change(function () {
-            $('#name-preview').text($("#nama-kandidat").val());
+        $("#nama-tutor").change(function () {
+            $('#name-preview').text($("#nama-tutor").val());
         });
 
         $("#visi-kandidat").change(function () {
