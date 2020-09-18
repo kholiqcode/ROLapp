@@ -35,6 +35,12 @@ class Pemesanan_model extends CI_Model
         return $this->db->affected_rows();
     }
 
+    public function deleteTutor($pid){
+        $this->db->where('id', $pid)->delete($this->table);
+
+        return $this->db->affected_rows();
+    }
+
     public function postPesanan($data)
     {
         $this->db->insert($this->table, $data);

@@ -76,7 +76,7 @@
                                         <td><?= $status ?></td>
                                         <td>
                                             <a href="<?= base_url('admin/pemesanan/edit/' . $row['id']) ?>"><button type="button" class="btn btn-primary btn-sm mr-1">Edit</button></a>
-                                            <button type="button" class="btn btn-danger btn-sm">Delete</button>
+                                            <a href="<?= base_url('admin/pemesanan/delete/' . $row['id']) ?>"><button type="button" class="btn btn-danger btn-sm">Delete</button></a>
                                         </td>
                                     </tr>
                                 <?php endforeach ?>

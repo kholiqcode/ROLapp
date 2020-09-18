@@ -81,6 +81,12 @@ class Pemesanan extends CI_Controller
         echo json_encode($res);
     }
 
+    public function delete($pid){
+
+        $this->pemesanan->deleteTutor($pid);
+        redirect(base_url('admin/pemesanan'));
+    }
+
     public function edit($pid)
     {
 

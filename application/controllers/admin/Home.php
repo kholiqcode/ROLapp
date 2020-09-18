@@ -18,7 +18,7 @@ class Home extends CI_Controller
 
     public function index()
     {
-        // $total_dpt = $this->home->total_dpt();
+        $total_pemesanan = $this->home->totalPemesanan();
         // $suara_masuk = $this->home->suara_masuk();
         // $belum_voting = $total_dpt > $suara_masuk ? $total_dpt - $suara_masuk : $suara_masuk - $total_dpt;
         // $kandidat = $this->kandidat->get_kandidat();
@@ -28,7 +28,7 @@ class Home extends CI_Controller
         $data = [
             'title' => 'Home',
             'content' => [
-                'total_dpt'     => 100,
+                'total_dpt'     => $total_pemesanan,
                 'suara_masuk'   => 0,
                 'belum_voting'  => 0,
                 'kandidat'      => 0

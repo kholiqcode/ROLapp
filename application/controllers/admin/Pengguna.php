@@ -1,15 +1,14 @@
 <?php
 
-defined('BASEPATH') or exit('No direct script access allowed');
+defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Tutor extends CI_Controller
-{
+class Pengguna extends CI_Controller {
 
     public function __construct()
     {
         parent::__construct();
         //Do your magic here
-        $this->load->model('admin/Tutor_model', 'tutor');
+        $this->load->model('admin/Pengguna_model', 'pengguna');
         if (!is_logged()) {
             redirect(base_url('admin/login'));
             return;
@@ -18,26 +17,27 @@ class Tutor extends CI_Controller
 
     public function index()
     {
-        $res = $this->tutor->getTutor();
+        $res = $this->pengguna->getUsers();
 
         if (empty($res)) redirect(base_url('admin'));
 
         $data = [
-            'title' => 'Daftar Tutor',
+            'title' => 'Daftar Pengguna',
             'content' => $res,
-            'page'  => 'tutor'
+            'page'  => 'pengguna'
         ];
 
         $this->load->view('layout/app', $data);
     }
+
 
     public function tambah()
     {
         if (!$this->input->post(null, true)) {
 
             $data = [
-                'title' => 'Tambah Tutor',
-                'page'  => 'tambah_tutor'
+                'title' => 'Tambah Pengguna',
+                'page'  => 'tambah_pengguna'
             ];
             $this->load->view('layout/app', $data);
             return;
@@ -45,11 +45,11 @@ class Tutor extends CI_Controller
             $input    = $this->input->post(null, true);
         }
 
-        if (!empty($_FILES) && $_FILES['foto_tutor']['name'] !== '') {
-            $imageName    = url_title($input['nama_pengguna'], '-', true) . '-' . date('YmdHis');
-            $upload        = $this->tutor->upload_image('foto_tutor', $imageName);
+        if (!empty($_FILES) && $_FILES['foto']['name'] !== '') {
+            $imageName    = url_title($input['nama'], '-', true) . '-' . date('YmdHis');
+            $upload        = $this->pengguna->upload_image('foto', $imageName);
             if ($upload) {
-                $input['foto_tutor']    = $upload['file_name'];
+                $input['foto']    = $upload['file_name'];
             } else {
                 $res = [
                     'status' => false,
@@ -64,46 +64,37 @@ class Tutor extends CI_Controller
             // $this->load->view('admin/tambah_kandidat', $input);
             $res = [
                 'status' => false,
-                'message' => 'Oops! Terjadi suatu kesalahan saat validasi'
+                'message' => 'Oops! Terjadi suatu kesalahan saat validasi. '.validation_errors(null, null)
             ];
             echo json_encode($res);
             return;
         }
 
-        $data = [
-            'id_users' => $input['nama_pengguna'],
-            'id_kategori' => $input['nama_kategori'],
-            'nama' => $input['nama_tutor'],
-            'alamat' => $input['alamat_tutor'],
-            'harga' => $input['harga_tutor'],
-            'foto' => $input['foto_tutor'],
-            'role' => 0
-        ];
+        $input['password'] = password_hash($input['password'], PASSWORD_BCRYPT);
 
-        if ($this->tutor->addTutor($data)) {
+        if ($this->pengguna->addPengguna($input)) {
             $res = [
                 'status' => true,
-
                 'message' => 'Data berhasil disimpan!'
             ];
         } else {
             $res = [
                 'status' => false,
-                'message' => 'Oops! Gagal menambahkan data'
+                'message' => 'Oops! Gagal menambahkan data '
             ];
         }
         echo json_encode($res);
     }
 
-    public function edit($tid)
+    public function edit($uid)
     {
         if (!$_POST) {
-            $res = $this->tutor->getTutor($tid);
+            $res = $this->pengguna->getUsers($uid);
             
             $data = [
-                'title' => 'Edit Tutor',
+                'title' => 'Edit Pengguna',
                 'content' => $res,
-                'page'  => 'edit_tutor'
+                'page'  => 'edit_pengguna'
             ];
 
             $this->load->view('layout/app', $data);
@@ -113,11 +104,11 @@ class Tutor extends CI_Controller
             $input    = $this->input->post(null, true);
         }
 
-        if (!empty($_FILES) && $_FILES['foto_tutor']['name'] !== '') {
-            $imageName    = url_title($tid, '-', true) . '-' . date('YmdHis');
-            $upload        = $this->tutor->upload_image('foto_tutor', $imageName);
+        if (!empty($_FILES) && $_FILES['foto']['name'] !== '') {
+            $imageName    = url_title($uid, '-', true) . '-' . date('YmdHis');
+            $upload        = $this->pengguna->upload_image('foto', $imageName);
             if ($upload) {
-                $input['foto_tutor']    = $upload['file_name'];
+                $input['foto']    = $upload['file_name'];
             } else {
                 $res = [
                     'status' => false,
@@ -126,8 +117,6 @@ class Tutor extends CI_Controller
                 echo json_encode($res);
                 return;
             }
-        }else{
-            $input['foto_tutor'] = '';
         }
 
         if (!$this->validate()) {
@@ -139,15 +128,8 @@ class Tutor extends CI_Controller
             echo json_encode($res);
             return;
         }
-
-        $data = [
-            'nama' => $input['nama_tutor'],
-            'alamat' => $input['alamat_tutor'],
-            'harga' => $input['harga_tutor'],
-            'foto' => $input['foto_tutor']
-        ];
         
-        if ($this->tutor->putTutor($tid, $data) > 0) {
+        if ($this->pengguna->putTPengguna($uid, $input) > 0) {
             $res = [
                 'status' => true,
                 'message' => 'Data berhasil disimpan!'
@@ -161,65 +143,79 @@ class Tutor extends CI_Controller
         echo json_encode($res);
     }
 
-    public function delete($id)
+    public function get()
     {
+        echo json_encode($this->pengguna->getUsers());
+    }
 
-        $this->tutor->deleteTutor($id);
-        redirect(base_url('admin/tutor'));
+
+    public function validatePost()
+    {
+        $validationRules = [
+            [
+                'field'    => 'nama',
+                'label'    => 'Nama pengguna',
+                'rules'    => 'trim|required'
+            ],
+            [
+                'field'    => 'email',
+                'label'    => 'Email Pengguna',
+                'rules'    => 'trim|required'
+            ],
+            [
+                'field'    => 'password',
+                'label'    => 'Password',
+                'rules'    => 'trim|required'
+            ],
+            [
+                'field'    => 'jenis_kelamin',
+                'label'    => 'Jenis Kelamin',
+                'rules'    => 'trim|required'
+            ],
+            [
+                'field'    => 'telepon',
+                'label'    => 'Telepon',
+                'rules'    => 'trim|required'
+            ],
+            [
+                'field'    => 'alamat',
+                'label'    => 'Alamat',
+                'rules'    => 'trim|required'
+            ]
+        ];
+
+        $res = validateReq($validationRules);
+
+        return $res;
     }
 
     public function validate()
     {
         $validationRules = [
             [
-                'field'    => 'nama_tutor',
-                'label'    => 'Nama Tutor',
+                'field'    => 'nama',
+                'label'    => 'Nama pengguna',
                 'rules'    => 'trim|required'
             ],
             [
-                'field'    => 'alamat_tutor',
-                'label'    => 'Alamat Tutor',
+                'field'    => 'email',
+                'label'    => 'Email Pengguna',
                 'rules'    => 'trim|required'
             ],
             [
-                'field'    => 'harga_tutor',
-                'label'    => 'Harga Tutor',
-                'rules'    => 'trim|required'
-            ]
-        ];
-
-        $res = validateReq($validationRules);
-
-        return $res;
-    }
-
-    public function validatePost()
-    {
-        $validationRules = [
-            [
-                'field'    => 'nama_pengguna',
-                'label'    => 'Users Id',
+                'field'    => 'jenis_kelamin',
+                'label'    => 'Jenis Kelamin',
                 'rules'    => 'trim|required'
             ],
             [
-                'field'    => 'nama_kategori',
-                'label'    => 'Kategori Id',
+                'field'    => 'telepon',
+                'label'    => 'Telepon',
                 'rules'    => 'trim|required'
             ],
             [
-                'field'    => 'nama_tutor',
-                'label'    => 'nama Tutor',
-                'rules'    => 'trim|required'
-            ],
-            [
-                'field'    => 'alamat_tutor',
+                'field'    => 'alamat',
                 'label'    => 'Alamat',
                 'rules'    => 'trim|required'
-            ],
-            [
-                'field'    => 'harga_tutor',
-                'label'    => 'Harga Tutor',
-                'rules'    => 'trim|required'
             ]
         ];
 
@@ -228,10 +224,6 @@ class Tutor extends CI_Controller
         return $res;
     }
 
-    public function get()
-    {
-        echo json_encode($this->tutor->getTutor());
-    }
 }
 
-/* End of file Tutor.php */
+/* End of file Users.php */

@@ -14,7 +14,7 @@
     Form.prototype.init = function () {
 
         //onload pengguna
-        $.get('http://localhost/tutor/admin/users/get')
+        $.get('http://localhost/tutor/admin/pengguna/get')
             .done(function (data) {
                 var obj = JSON.parse(data);
                 var len = obj.length;
@@ -105,8 +105,16 @@
             $('#prodi-preview').text($("#select-kategori option:selected").text());
         });
 
+        $("#jenis-kelamin").change(function () {
+            $('#kelamin-preview').text($("#jenis-kelamin").text());
+        });
+
         $("#nama-tutor").change(function () {
             $('#name-preview').text($("#nama-tutor").val());
+        });
+
+        $("#nama-pengguna").change(function () {
+            $('#name-preview').text($("#nama-pengguna").val());
         });
 
         $("#visi-kandidat").change(function () {

@@ -4,7 +4,7 @@
             <div class="topbar-left">
                 <a href="<?= base_url('admin/home') ?>" class="logo">
                     <span class="logo-light">
-                        <i class="mdi mdi-camera-control"></i> EVOTING
+                        <i class="mdi mdi-camera-control"></i> ROLap
                     </span>
                     <span class="logo-sm">
                         <i class="mdi mdi-camera-control"></i>

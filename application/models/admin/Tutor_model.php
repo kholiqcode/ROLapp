@@ -9,10 +9,10 @@ class Tutor_model extends CI_Model
 
     public function getTutor($tid = null)
     {
-        if (isset($tid) || !empty($tid) || is_null($tid)) {
-            $query    = $this->db->select('id,nama,alamat,total_trx,harga,foto')->where('role', 0)->get($this->table)->result_array();
+        if (isset($tid) || !empty($tid)) {
+            $query    = $this->db->select('tutor.id,users.nama as nama_pengguna,tutor.nama,tutor.alamat,tutor.total_trx,tutor.harga,tutor.foto')->where('role', 0)->where('tutor.id', $tid)->join('users','tutor.id_users=users.id')->get($this->table)->row_array();
         } else {
-            $query    = $this->db->select('id,nama,alamat,total_trx,harga,foto')->where('role', 0)->where('id', $tid)->get($this->table)->result_array();
+            $query    = $this->db->select('tutor.id,users.nama as nama_pengguna,tutor.nama,tutor.alamat,tutor.total_trx,tutor.harga,tutor.foto')->where('role', 0)->join('users','tutor.id_users=users.id')->get($this->table)->result_array();
         }
 
         return $query;
@@ -26,6 +26,13 @@ class Tutor_model extends CI_Model
 
     public function deleteTutor($tid){
         $this->db->where('id', $tid)->delete($this->table);
+
+        return $this->db->affected_rows();
+    }
+
+    public function putTutor($tid = null, $data = null)
+    {
+        $this->db->where('id', $tid)->update($this->table, $data);
 
         return $this->db->affected_rows();
     }
