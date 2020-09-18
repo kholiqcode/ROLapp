@@ -129,7 +129,7 @@ class Pengguna extends CI_Controller {
             return;
         }
         
-        if ($this->pengguna->putTPengguna($uid, $input) > 0) {
+        if ($this->pengguna->putPengguna($uid, $input) > 0) {
             $res = [
                 'status' => true,
                 'message' => 'Data berhasil disimpan!'
@@ -141,6 +141,12 @@ class Pengguna extends CI_Controller {
             ];
         }
         echo json_encode($res);
+    }
+
+    public function delete($uid)
+    {
+        $this->pengguna->deletePengguna($uid);
+        redirect(base_url('admin/pengguna'));
     }
 
     public function get()

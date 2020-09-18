@@ -21,11 +21,6 @@
                 <div class="card m-b-30">
                     <div class="card-body">
 
-                        <h4 class="mt-0 header-title">Validation type</h4>
-                        <p class="sub-title">Parsley is a javascript form validation
-                            library. It helps you provide your users with feedback on their form
-                            submission before sending it to your server.</p>
-
                         <?= form_open_multipart(base_url('admin/pengguna/edit/'.$content['id']), ['method' => 'POST', 'id' => 'authentication-form']) ?>
 
                         <div class="form-group">
@@ -64,7 +59,7 @@
                         <div class="form-group">
                             <label>Foto</label>
                             <div>
-                                <?= form_upload(['name' => 'foto', 'class' => 'form-control', 'id' => 'image-upload', 'placeholder' => 'Upload foto tutor', 'required' => true]) ?>
+                                <?= form_upload(['name' => 'foto', 'class' => 'form-control', 'id' => 'image-upload', 'placeholder' => 'Upload foto tutor']) ?>
                             </div>
                         </div>
 

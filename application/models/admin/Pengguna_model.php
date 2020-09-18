@@ -23,6 +23,19 @@ class Pengguna_model extends CI_Model {
         return $this->db->insert_id();
     }
 
+    public function putPengguna($uid = null, $data = null)
+    {
+        $this->db->where('id', $uid)->update($this->table, $data);
+
+        return $this->db->affected_rows();
+    }
+
+    public function deletePengguna($uid){
+        $this->db->where('id', $uid)->delete($this->table);
+
+        return $this->db->affected_rows();
+    }
+
     //upload image tutor
     public function upload_image($fieldName, $fileName)
     {

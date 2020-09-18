@@ -163,7 +163,6 @@ class Tutor extends CI_Controller
 
     public function delete($id)
     {
-
         $this->tutor->deleteTutor($id);
         redirect(base_url('admin/tutor'));
     }

@@ -3,7 +3,7 @@
         <div class="page-title-box">
             <div class="row align-items-center">
                 <div class="col-sm-6">
-                    <h4 class="page-title">Tambah Pemesanan</h4>
+                    <h4 class="page-title"><?= $title ?></h4>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-right">
@@ -20,11 +20,6 @@
             <div class="col-lg-6">
                 <div class="card m-b-30">
                     <div class="card-body">
-
-                        <h4 class="mt-0 header-title">Validation type</h4>
-                        <p class="sub-title">Parsley is a javascript form validation
-                            library. It helps you provide your users with feedback on their form
-                            submission before sending it to your server.</p>
 
                         <?= form_open(base_url('admin/pemesanan/tambah'), ['method' => 'POST', 'id' => 'authentication-form']) ?>
 
