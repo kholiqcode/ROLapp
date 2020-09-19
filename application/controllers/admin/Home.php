@@ -19,19 +19,21 @@ class Home extends CI_Controller
     public function index()
     {
         $total_pemesanan = $this->home->totalPemesanan();
-        // $suara_masuk = $this->home->suara_masuk();
+        $total_pendapatan = $this->home->totalPendapatan();
+        $total_pengguna = $this->home->totalPengguna();
+        $total_tutor = $this->home->totalTutor();
         // $belum_voting = $total_dpt > $suara_masuk ? $total_dpt - $suara_masuk : $suara_masuk - $total_dpt;
         // $kandidat = $this->kandidat->get_kandidat();
 
         if (!isset($total_dpt) || !isset($suara_masuk)) $total_dpt = $suara_masuk = $belum_voting = 0;
-
+        
         $data = [
             'title' => 'Home',
             'content' => [
-                'total_dpt'     => $total_pemesanan,
-                'suara_masuk'   => 0,
-                'belum_voting'  => 0,
-                'kandidat'      => 0
+                'total_pemesanan'     => $total_pemesanan,
+                'total_pendapatan'   => $total_pendapatan,
+                'total_pengguna'  => $total_pengguna,
+                'total_tutor'      => $total_tutor
             ],
             'page' => 'home'
         ];

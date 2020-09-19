@@ -27,7 +27,7 @@
                         <div>
                             <h5 class="font-16">Total Pemesanan</h5>
                         </div>
-                        <h3 class="mt-4"><?= number_format($content['total_dpt']) ?></h3>
+                        <h3 class="mt-4"><?= number_format($content['total_pemesanan']) ?></h3>
                         <div class="progress mt-4" style="height: 4px;">
                             <div class="progress-bar bg-primary" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
@@ -46,9 +46,9 @@
                         <div>
                             <h5 class="font-16">Total Pendapatan</h5>
                         </div>
-                        <h3 class="mt-4"><?= number_format($content['suara_masuk']) ?></h3>
+                        <h3 class="mt-4">Rp <?= number_format($content['total_pendapatan']) ?></h3>
                         <div class="progress mt-4" style="height: 4px;">
-                            <div class="progress-bar bg-warning" role="progressbar" style="width: <?= ($content['suara_masuk'] / $content['total_dpt'] * 100) . '%' ?>" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar bg-warning" role="progressbar" style="width: 100%" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                         <!-- <p class="text-muted mt-2 mb-0">Persentase<span class="float-right">68%</span>
                         </p> -->
@@ -65,9 +65,9 @@
                         <div>
                             <h5 class="font-16">Total Pengguna</h5>
                         </div>
-                        <h3 class="mt-4"><?= number_format($content['belum_voting']) ?></h3>
+                        <h3 class="mt-4"><?= number_format($content['total_pengguna']) ?></h3>
                         <div class="progress mt-4" style="height: 4px;">
-                            <div class="progress-bar bg-danger" role="progressbar" style="width: <?= ($content['belum_voting'] / $content['total_dpt'] * 100) . '%' ?>" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar bg-danger" role="progressbar" style="width:100%" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                         <!-- <p class="text-muted mt-2 mb-0">Persentase<span class="float-right">82%</span>
                         </p> -->
@@ -84,9 +84,9 @@
                         <div>
                             <h5 class="font-16">Total Tutor </h5>
                         </div>
-                        <h3 class="mt-4"><?= number_format(($content['suara_masuk'] / $content['total_dpt']) * 100) ?>%</h3>
+                        <h3 class="mt-4"><?= number_format($content['total_tutor']) ?></h3>
                         <div class="progress mt-4" style="height: 4px;">
-                            <div class="progress-bar bg-danger" role="progressbar" style="width: <?= ($content['suara_masuk'] / $content['total_dpt'] * 100) . '%' ?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar bg-danger" role="progressbar" style="width:100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                         <!-- <p class="text-muted mt-2 mb-0">Persentase<span class="float-right">82%</span>
                                     </p> -->

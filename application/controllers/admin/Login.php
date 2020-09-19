@@ -27,7 +27,7 @@ class Login extends CI_Controller
         if (!$this->validate()) {
             
             $data['input']    = $input;
-            
+            $data['title']      = 'Admin Login - ROLap';
             $this->load->view('login/admin', $data);
             return;
         }

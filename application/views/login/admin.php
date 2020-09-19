@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <title>Stexo - Responsive Admin & Dashboard Template | Themesdesign</title>
+    <title><?= $title ?></title>
     <meta content="Responsive admin theme build on top of Bootstrap 4" name="description" />
     <meta content="Themesdesign" name="author" />
     <link rel="shortcut icon" href="<?= base_url('assets/images/favicon.ico') ?>">
@@ -34,7 +34,7 @@
                 <div class="text-center m-t-0 m-b-15">
                     <a href="<?= base_url('admin') ?>" class="logo logo-admin"><img src="<?= base_url('assets/images/logo-dark.png') ?>" alt="" height="24"></a>
                 </div>
-                <h5 class="font-18 text-center">Sign in to continue to Admin Panel.</h5>
+                <h5 class="font-18 text-center">Masuk untuk melanjutkan ke Admin Panel.</h5>
                 <?= form_open(base_url('admin/login'), ['method' => 'POST', 'id' => 'authentication-form', 'class' => 'form-horizontal m-t-30']) ?>
 
                 <div class="form-group">
