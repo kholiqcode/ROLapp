@@ -20,7 +20,7 @@ class Tutor extends CI_Controller
     {
         $res = $this->tutor->getTutor();
 
-        if (empty($res)) redirect(base_url('admin'));
+        if (!isset($res)) redirect(base_url('admin'));
 
         $data = [
             'title' => 'Daftar Tutor',

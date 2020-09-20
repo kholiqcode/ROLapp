@@ -20,7 +20,7 @@ class Pemesanan extends CI_Controller
     {
         $res = $this->pemesanan->getPesanan();
 
-        if (empty($res)) redirect(base_url('admin'));
+        if (!isset($res)) redirect(base_url('admin'));
 
         $data = [
             'title' => 'Daftar Pemesanan',

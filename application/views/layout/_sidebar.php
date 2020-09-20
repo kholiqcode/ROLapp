@@ -41,6 +41,15 @@
                 </li>
 
                 <li>
+                    <a href="javascript:void(0);" class="waves-effect"><i class="icon-spread"></i><span>
+                            Kategori <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
+                    <ul class="submenu">
+                        <li><a href="<?= base_url('admin/kategori') ?>">Daftar Kategori</a></li>
+                        <li><a href="<?= base_url('admin/kategori/tambah') ?>">Tambah Kategori</a></li>
+                    </ul>
+                </li>
+
+                <li>
                     <a href="<?= base_url('admin/laporan') ?>" class="waves-effect"><i class="icon-paper-sheet"></i><span> Laporan
                         </span></a>
                 </li>

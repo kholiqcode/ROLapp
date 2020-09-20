@@ -41,7 +41,7 @@ class Tutor_model extends CI_Model
     public function upload_image($fieldName, $fileName)
     {
         $config    = [
-            'upload_path'        => './public/images/tutor',
+            'upload_path'        => './public/images/katalog',
             'file_name'            => $fileName,
             'allowed_types'        => 'jpg|gif|png|jpeg|JPG|PNG',
             'max_size'            => 1024,

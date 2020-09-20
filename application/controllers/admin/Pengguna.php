@@ -19,7 +19,7 @@ class Pengguna extends CI_Controller {
     {
         $res = $this->pengguna->getUsers();
 
-        if (empty($res)) redirect(base_url('admin'));
+        if (!isset($res)) redirect(base_url('admin'));
 
         $data = [
             'title' => 'Daftar Pengguna',
