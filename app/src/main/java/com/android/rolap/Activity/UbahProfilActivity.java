@@ -40,20 +40,37 @@ import com.android.rolap.R;
 import com.android.rolap.Rest.RequestAPI;
 import com.android.rolap.Rest.Response.ResponseDaftar;
 import com.android.rolap.Rest.Response.ResponseProfil;
+import com.android.rolap.Rest.Response.ResponseUsers;
 import com.android.rolap.Rest.RestApi;
+import com.android.rolap.Rest.VolleyMultipartRequest;
+import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkResponse;
+import com.android.volley.Request;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import id.zelory.compressor.Compressor;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static com.android.rolap.Helper.Constant.WEBSERVICE_API_PATH;
+import static com.android.rolap.Helper.Constant.WEBSERVICE_PATH;
 
 public class UbahProfilActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -66,7 +83,8 @@ public class UbahProfilActivity extends AppCompatActivity implements View.OnClic
     private PrefManager prefmanager;
     private Button btnSimpan,btnUbahPassword;
     private CircleImageView civUsers;
-    private String strNama,strEmail,strJenisKelamin,strTelepon,strAlamat,strFileName,strImage;
+    private String strNama,strEmail,strJenisKelamin,strTelepon,strAlamat,strFileName,strImage = "";
+    private List<ResponseUsers.Data> dataUser;
     private Uri mImageUri;
     private Bitmap bitmap;
 
@@ -90,20 +108,22 @@ public class UbahProfilActivity extends AppCompatActivity implements View.OnClic
         ivKembali = findViewById(R.id.ivBack);
         btnUbahPassword = findViewById(R.id.btnUbahPassword);
 
-        etNama.setText(String.valueOf(prefmanager.getNama()));
-        etEmail.setText(String.valueOf(prefmanager.getEmail()));
-        etTelepon.setText(String.valueOf(prefmanager.getTelepon()));
-        etAlamat.setText(String.valueOf(prefmanager.getAlamat()));
-        if(String.valueOf(prefmanager.getGender()).equalsIgnoreCase("L")){
-            cbMan.setChecked(true);
-        }else if(String.valueOf(prefmanager.getGender()).equalsIgnoreCase("P")){
-            cbWoman.setChecked(true);
-        }
-        if(prefmanager.getFoto() == null){
-            Glide.with(this).load(R.drawable.image_profil).into(civUsers);
-        }else{
-            Glide.with(this).load(Constant.WEBSERVICE_IMAGE+"users/"+prefmanager.getFoto()).into(civUsers);
-        }
+//        etNama.setText(String.valueOf(prefmanager.getNama()));
+//        etEmail.setText(String.valueOf(prefmanager.getEmail()));
+//        etTelepon.setText(String.valueOf(prefmanager.getTelepon()));
+//        etAlamat.setText(String.valueOf(prefmanager.getAlamat()));
+//        if(String.valueOf(prefmanager.getGender()).equalsIgnoreCase("L")){
+//            cbMan.setChecked(true);
+//        }else if(String.valueOf(prefmanager.getGender()).equalsIgnoreCase("P")){
+//            cbWoman.setChecked(true);
+//        }
+//        if(prefmanager.getFoto() == null){
+//            Glide.with(this).load(R.drawable.image_profil).into(civUsers);
+//        }else{
+//            Glide.with(this).load(Constant.IMAGE_KATALOG+prefmanager.getFoto()).into(civUsers);
+//        }
+
+        getInfo();
 
         btnSimpan.setOnClickListener(this);
         btnUbahPassword.setOnClickListener(this);
@@ -152,6 +172,42 @@ public class UbahProfilActivity extends AppCompatActivity implements View.OnClic
                 chooseFile();
                 break;
         }
+    }
+
+    public void getInfo(){
+        RequestAPI rolapAPI = RestApi.createAPI();
+        Call<ResponseUsers> call = rolapAPI.getUser(prefmanager.getToken());
+        call.enqueue(new Callback<ResponseUsers>() {
+            @Override
+            public void onResponse(Call<ResponseUsers> call, Response<ResponseUsers> response) {
+                if (response.isSuccessful()) {
+                    dataUser = response.body().data;
+
+                    etNama.setText(String.valueOf(dataUser.get(0).nama));
+                    etEmail.setText(String.valueOf(dataUser.get(0).email));
+                    etTelepon.setText(String.valueOf(dataUser.get(0).telepon));
+                    etAlamat.setText(String.valueOf(dataUser.get(0).alamat));
+                    if(String.valueOf(dataUser.get(0).jenis_kelamin).equalsIgnoreCase("L")){
+                        cbMan.setChecked(true);
+                    }else if(String.valueOf(dataUser.get(0).jenis_kelamin).equalsIgnoreCase("P")){
+                        cbWoman.setChecked(true);
+                    }
+                    if(dataUser.get(0).foto.isEmpty()){
+                        Glide.with(UbahProfilActivity.this).load(R.drawable.image_profil).into(civUsers);
+                    }else{
+                        Glide.with(UbahProfilActivity.this).load(Constant.IMAGE_USERS+dataUser.get(0).foto).into(civUsers);
+                    }
+                } else {
+                    helper.showToast(getString(R.string.msgWrong));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseUsers> call, Throwable t) {
+                helper.showToast(getString(R.string.msgWrong));
+                t.printStackTrace();
+            }
+        });
     }
 
     private void chooseFile() {
@@ -245,20 +301,10 @@ public class UbahProfilActivity extends AppCompatActivity implements View.OnClic
                 case Constant.ActivityForResult.CAMERA:
                     if (helper.isOnline()) {
                         Glide.with(this)
+                                .asBitmap()
                                 .load(mImageUri)
+                                .centerInside()
                                 .into(civUsers);
-                        File file = new File(getRealPathFromURI(mImageUri));
-                        try {
-                            this.bitmap =  MediaStore.Images.Media.getBitmap(getContentResolver(),mImageUri);
-                            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-                            byte[] imageBytes = baos.toByteArray();
-                            this.strImage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                        strFileName = file.getName();
-                        this.requestBody = RequestBody.create(MediaType.parse("multipart/form-file"), file);
                     } else {
                         helper.showToast(R.string.msgNoCennection);
                     }
@@ -271,18 +317,6 @@ public class UbahProfilActivity extends AppCompatActivity implements View.OnClic
                             Glide.with(this)
                                     .load(mImageUri)
                                     .into(civUsers);
-                            File file = new File(getRealPathFromURI(mImageUri));
-                            try {
-                                this.bitmap =  MediaStore.Images.Media.getBitmap(getContentResolver(),mImageUri);
-                                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-                                byte[] imageBytes = baos.toByteArray();
-                                this.strImage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                            strFileName = file.getName();
-                            requestBody = RequestBody.create(MediaType.parse(getContentResolver().getType(mImageUri)), file);
                         }
                     } else {
                         helper.showToast(R.string.msgNoCennection);
@@ -307,26 +341,35 @@ public class UbahProfilActivity extends AppCompatActivity implements View.OnClic
     public void postUbahProfil() {
         progressbar.setVisibility(View.VISIBLE);
 
-
-        RequestBody requestApikey = RequestBody.create(MediaType.parse("text/plain"), prefmanager.getToken());
-        RequestBody requestNama = RequestBody.create(MediaType.parse("text/plain"), etNama.getText().toString().trim());
-        RequestBody requestAlamat = RequestBody.create(MediaType.parse("text/plain"), etAlamat.getText().toString().trim());
-        RequestBody requestTelepon = RequestBody.create(MediaType.parse("text/plain"), etTelepon.getText().toString().trim());
-        RequestBody requestJenisKelamin = RequestBody.create(MediaType.parse("text/plain"), "L");
+        strNama = etNama.getText().toString().trim();
+        strAlamat = etAlamat.getText().toString().trim();
+        strTelepon = etTelepon.getText().toString().trim();
+        strAlamat = etAlamat.getText().toString().trim();
         if (cbMan.isChecked()) {
-            requestJenisKelamin = RequestBody.create(MediaType.parse("text/plain"), "L");
+            strJenisKelamin = "L";
         }else if(cbWoman.isChecked()){
-            requestJenisKelamin = RequestBody.create(MediaType.parse("text/plain"), "P");
-        }
-        RequestBody requestFoto = RequestBody.create(MediaType.parse("text/plain"), strImage);
-
-        MultipartBody.Part part = null;
-        if (this.requestBody != null) {
-            part = MultipartBody.Part.createFormData("foto", strFileName, this.requestBody);
+            strJenisKelamin = "P";
         }
 
+        RequestBody rbToken = RequestBody.create(prefmanager.getToken(),MediaType.parse("text/plain"));
+        RequestBody rbNama = RequestBody.create(strNama,MediaType.parse("text/plain"));
+        RequestBody rbAlamat = RequestBody.create(strAlamat,MediaType.parse("text/plain"));
+        RequestBody rbTelepon = RequestBody.create(strTelepon,MediaType.parse("text/plain"));
+        RequestBody rbJenisKelamin = RequestBody.create(strJenisKelamin,MediaType.parse("text/plain"));
+        File file = new File(getRealPathFromURI(mImageUri));
+//        strFileName = file.getName();
+//        strImage = helper.getFileToByte(mImageUri);
+        try {
+            Bitmap compressedImageBitmap = new Compressor(this).compressToBitmap(file);
+            strImage = helper.bitmapToBase64(compressedImageBitmap);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        RequestBody strImages = RequestBody.create(strImage,MediaType.parse("text/plain"));
+//        MultipartBody.Part strImages = MultipartBody.Part.createFormData("foto",strFileName,requestBody);
+        
         RequestAPI rolapAPI = RestApi.createAPI();
-        Call<ResponseProfil> call = rolapAPI.putUsers(requestApikey,requestNama,requestAlamat,requestJenisKelamin,requestTelepon,requestFoto);
+        Call<ResponseProfil> call = rolapAPI.putUsers(rbToken,rbNama,rbAlamat,rbJenisKelamin,rbTelepon,strImages);
         call.enqueue(new Callback<ResponseProfil>() {
             @Override
             public void onResponse(Call<ResponseProfil> call, Response<ResponseProfil> response) {

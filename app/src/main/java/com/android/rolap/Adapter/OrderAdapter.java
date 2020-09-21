@@ -59,7 +59,7 @@ public class OrderAdapter extends RecyclerView.Adapter {
         if(orderList.get(position).foto == ""){
             Glide.with(mContext).load(R.drawable.image_profil).into(holder.civTutor);
         }else{
-            Glide.with(mContext).load(Constant.WEBSERVICE_IMAGE+orderList.get(position).foto).into(holder.civTutor);
+            Glide.with(mContext).load(Constant.IMAGE_USERS+orderList.get(position).foto).into(holder.civTutor);
         }
     }
 

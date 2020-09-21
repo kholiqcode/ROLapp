@@ -115,6 +115,21 @@ public class TutorSayaActivity extends AppCompatActivity implements View.OnClick
                         }
                     });
 
+                    tutorSayaAdapter.setOnEditCLick(new TutorSayaAdapter.OnEditClick() {
+                        @Override
+                        public void onEditClick(int position) {
+                            Intent intent = new Intent(TutorSayaActivity.this, EditTutorActivity.class);
+                            intent.putExtra("tid", tutorsayaList.get(position).id);
+                            intent.putExtra("kid", tutorsayaList.get(position).id_kategori);
+                            intent.putExtra("nama", tutorsayaList.get(position).nama);
+                            intent.putExtra("alamat", tutorsayaList.get(position).alamat);
+                            intent.putExtra("harga", tutorsayaList.get(position).harga);
+                            intent.putExtra("foto", tutorsayaList.get(position).foto);
+                            ActivityOptions options = ActivityOptions.makeCustomAnimation(TutorSayaActivity.this, R.anim.slide_in, R.anim.slide_out);
+                            startActivity(intent, options.toBundle());
+                        }
+                    });
+
                     tutorSayaAdapter.setOnDeleteCLick(new TutorSayaAdapter.OnDeleteClick() {
                         @Override
                         public void onDeleteClick(int position) {

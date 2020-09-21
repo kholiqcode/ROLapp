@@ -26,7 +26,9 @@ public class TutorSayaAdapter extends RecyclerView.Adapter {
     private List<ResponseTutorSaya.Data> tutorsayaList;
     private Context mContext;
     private TutorSayaAdapter.OnDetailsClick onDetailClick;
-    private TutorSayaAdapter.OnDeleteClick onDeleteCLick;
+    private TutorSayaAdapter.OnDeleteClick onDeleteClick;
+    private TutorSayaAdapter.OnEditClick onEditClick;
+
 
     public TutorSayaAdapter(Context mContext, List<ResponseTutorSaya.Data> tutorsaya){
         this.mContext = mContext;
@@ -54,7 +56,14 @@ public class TutorSayaAdapter extends RecyclerView.Adapter {
         holder.civDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onDeleteCLick.onDeleteClick(position);
+                onDeleteClick.onDeleteClick(position);
+            }
+        });
+
+        holder.civEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onEditClick.onEditClick(position);
             }
         });
 
@@ -79,11 +88,19 @@ public class TutorSayaAdapter extends RecyclerView.Adapter {
     }
 
     public void setOnDeleteCLick(TutorSayaAdapter.OnDeleteClick OnDeleteClick) {
-        this.onDeleteCLick = OnDeleteClick;
+        this.onDeleteClick = OnDeleteClick;
     }
 
     public interface OnDeleteClick {
         void onDeleteClick(int position);
+    }
+
+    public void setOnEditCLick(TutorSayaAdapter.OnEditClick OnEditClick) {
+        this.onEditClick = OnEditClick;
+    }
+
+    public interface OnEditClick {
+        void onEditClick(int position);
     }
 
     private class TutorSayaViewHolder extends RecyclerView.ViewHolder {

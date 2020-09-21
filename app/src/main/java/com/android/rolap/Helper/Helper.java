@@ -2,8 +2,12 @@ package com.android.rolap.Helper;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
@@ -20,6 +24,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.rolap.R;
 
+import java.io.ByteArrayOutputStream;
 import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -57,6 +62,41 @@ public class Helper {
 
     public void showToast(int resId) {
         Message.showToast(context, resId);
+    }
+
+    // Put the image file path into this method
+    public String getFileToByte(Uri mImageUri){
+        Bitmap bmp = null;
+        ByteArrayOutputStream bos = null;
+        byte[] bt = null;
+        String encodeString = null;
+        try{
+            bmp =  MediaStore.Images.Media.getBitmap(this.context.getContentResolver(),mImageUri);
+            bos = new ByteArrayOutputStream();
+            bmp.compress(Bitmap.CompressFormat.JPEG, 25, bos);
+            bt = bos.toByteArray();
+            encodeString = Base64.encodeToString(bt, Base64.DEFAULT);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return encodeString;
+    }
+
+    public String bitmapToBase64(Bitmap bmp){
+        ByteArrayOutputStream bos = null;
+        byte[] bt = null;
+        String encodeString = null;
+        try{
+            bos = new ByteArrayOutputStream();
+            bmp.compress(Bitmap.CompressFormat.JPEG, 25, bos);
+            bt = bos.toByteArray();
+            encodeString = Base64.encodeToString(bt, Base64.DEFAULT);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return encodeString;
     }
 
     public void AnimationRight(final RecyclerView recyclerView) {

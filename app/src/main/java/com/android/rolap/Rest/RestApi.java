@@ -12,6 +12,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+
 public class RestApi {
     static final String WEBSERVICE_PATH = Constant.WEBSERVICE_PATH;
     private static final String TAG = RestApi.class.getSimpleName();
@@ -35,11 +36,13 @@ public class RestApi {
         logging.setLevel(HttpLoggingInterceptor.Level.HEADERS);
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient.Builder client = new OkHttpClient.Builder();
-        client.readTimeout(60, TimeUnit.SECONDS);
-        client.writeTimeout(1, TimeUnit.MINUTES);
-        client.connectTimeout(60, TimeUnit.SECONDS);
+        client.readTimeout(2, TimeUnit.MINUTES);
+        client.writeTimeout(2, TimeUnit.MINUTES);
+        client.connectTimeout(2, TimeUnit.MINUTES);
+        client.socketFactory(new RestrictedSocketFactory(1024 * 1024));
         if (BuildConfig.DEBUG)
             client.addInterceptor(logging);
+
         return client.build();
     }
 }

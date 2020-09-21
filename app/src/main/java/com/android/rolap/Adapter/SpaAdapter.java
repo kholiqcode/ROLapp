@@ -58,7 +58,7 @@ public class SpaAdapter extends RecyclerView.Adapter {
         if(spaList.get(position).foto == ""){
             Glide.with(mContext).load(R.drawable.image_profil).into(holder.civSpa);
         }else{
-            Glide.with(mContext).load(Constant.WEBSERVICE_IMAGE+"spa/"+spaList.get(position).foto).into(holder.civSpa);
+            Glide.with(mContext).load(Constant.IMAGE_KATALOG+spaList.get(position).foto).into(holder.civSpa);
         }
     }
 
