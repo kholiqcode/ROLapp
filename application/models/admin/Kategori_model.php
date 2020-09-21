@@ -24,6 +24,12 @@ class Kategori_model extends CI_Model
         return $this->db->insert_id();
     }
 
+    public function deleteKategori($tid){
+        $this->db->where('id', $tid)->delete($this->table);
+
+        return $this->db->affected_rows();
+    }
+
     public function putKategori($tid = null, $data = null)
     {
         $this->db->where('id', $tid)->update($this->table, $data);

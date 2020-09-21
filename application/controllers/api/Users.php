@@ -36,7 +36,6 @@ class Users extends RestController {
     public function edit_post()
     {
         $input = $this->post();
-
         
         if (!$this->validatePut($input)) {
             $this->response([

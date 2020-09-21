@@ -19,7 +19,7 @@ class Kategori extends CI_Controller {
     {
         $res = $this->kategori->getKategori();
 
-        if (empty($res)) redirect(base_url('admin'));
+        if (!isset($res)) redirect(base_url('admin'));
 
         $data = [
             'title' => 'Daftar Kategori',
@@ -142,6 +142,12 @@ class Kategori extends CI_Controller {
             ];
         }
         echo json_encode($res);
+    }
+
+    public function delete($id)
+    {
+        $this->kategori->deleteKategori($id);
+        redirect(base_url('admin/kategori'));
     }
 
     public function get()

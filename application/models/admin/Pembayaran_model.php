@@ -9,7 +9,19 @@ class Pembayaran_model extends CI_Model
 
     public function getPembayaran()
     {
-        return $this->db->select('id,metode_pembayaran')->where('status', 1)->get($this->table)->result_array();
+        return $this->db->select('id,metode_pembayaran,nomor_rekening')->where('status', 1)->get($this->table)->result_array();
+    }
+
+    public function addPembayaran($data = [])
+    {
+        $this->db->insert($this->table, $data);
+        return $this->db->insert_id();
+    }
+
+    public function deletePembayaran($tid){
+        $this->db->where('id', $tid)->delete($this->table);
+
+        return $this->db->affected_rows();
     }
 }
 

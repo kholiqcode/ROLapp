@@ -18,23 +18,36 @@ class Users_model extends CI_Model
     {
         $uid = $this->token->decrypt($input['apikey']);
 
-        $foto =  base64_decode($input['foto']);
+        // if (!empty($_FILES) && $_FILES['foto']['name'] !== '') {
+        //     $imageName    = url_title($uid, '-', true) . '-' . date('YmdHis');
+        //     $upload        = $this->uploadFoto('foto', $imageName);
+        //     if ($upload) {
+        //         $data['foto']    = $imageName.".jpg";
+        //     } else {
+        //         echo $this->upload->display_errors();
+        //         return false;
+        //     }
+        // }
 
-        $imageName = url_title($uid, '-', true) . date('YmdHis').'.jpg';
+        if(!empty($input['foto'])){
+            $foto =  base64_decode($input['foto']);
 
-        $success = file_put_contents('./public/images/users/'.url_title($uid, '-', true) . date('YmdHis').'.jpg',$foto);
-        
-        if ($success) {
-            $data        = [
-                'nama'        => $input['nama'],
-                'jenis_kelamin'    => $input['jenis_kelamin'],
-                'alamat'    => $input['alamat'],
-                'telepon'        => $input['telepon'],
-                'foto'        => $imageName
-            ];
-        } else {
-            return false;
+            $imageName = url_title($uid, '-', true) . date('YmdHis').'.jpg';
+    
+            $success = file_put_contents('./public/images/users/'.url_title($uid, '-', true) . date('YmdHis').'.jpg',$foto);
+            
+            if ($success) {
+                $data['foto'] = $imageName;
+            }else{
+                return false;
+            }
+            
         }
+
+        $data['nama'] = $input['nama'];
+        $data['jenis_kelamin'] = $input['jenis_kelamin'];
+        $data['alamat'] = $input['alamat'];
+        $data['telepon'] = $input['telepon'];
 
         $this->db->where('id', $uid)->update($this->table, $data);
 
@@ -74,7 +87,7 @@ class Users_model extends CI_Model
             'upload_path'        => './public/images/users',
             'file_name'            => $fileName,
             'allowed_types'        => 'jpg|gif|png|jpeg|JPG|PNG',
-            'max_size'            => 1024,
+            'max_size'            => 10240,
             'max_width'            => 0,
             'max_height'        => 0,
             'overwrite'            => true,

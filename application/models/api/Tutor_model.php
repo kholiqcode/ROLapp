@@ -16,7 +16,7 @@ class Tutor_model extends CI_Model
 
         $imageName = url_title($uid, '-', true) . date('YmdHis').'.jpg';
 
-        $success = file_put_contents('./public/images/tutor/'.url_title($uid, '-', true) . date('YmdHis').'.jpg',$foto);
+        $success = file_put_contents('./public/images/katalog/'.url_title($uid, '-', true) . date('YmdHis').'.jpg',$foto);
 
         if ($success) {
             $data        = [
