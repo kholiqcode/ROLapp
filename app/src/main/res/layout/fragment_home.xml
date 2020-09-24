@@ -4,26 +4,104 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/homeLogo"
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp"
+        android:focusableInTouchMode="true"/>
+
+    <LinearLayout
+        android:id="@+id/llWelcome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:scaleType="fitCenter"
-        android:layout_centerInParent="true"
-        android:src="@drawable/image_splash_screen"
-        />
-    <TextView
+        android:orientation="vertical"
+        android:layout_below="@+id/view_pager"
+        android:layout_marginHorizontal="5dp"
+        android:layout_marginTop="40dp">
+        <ImageView
+            android:id="@+id/homeLogo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitCenter"
+            android:layout_centerInParent="true"
+            android:src="@drawable/image_splash_screen"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Selamat Datang di Aplikasi ROLap"
+            android:layout_below="@+id/homeLogo"
+            android:gravity="center"
+            android:layout_centerInParent="true"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            android:textStyle="bold"
+            android:fontFamily="@font/segoe_ui_bold"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llFirst"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Selamat Datang di Aplikasi ROLap"
-        android:layout_below="@+id/homeLogo"
-        android:gravity="center"
-        android:layout_centerInParent="true"
-        android:textSize="20sp"
-        android:layout_marginTop="20dp"
-        android:textStyle="bold"
-        android:fontFamily="@font/segoe_ui_bold"
-        />
+        android:layout_height="200dp"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:layout_marginHorizontal="5dp"
+        android:layout_below="@+id/llWelcome">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/shape_border"
+            android:layout_marginHorizontal="5dp"
+            android:gravity="center">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:layout_alignParentTop="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/image_tutor"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Tutor"
+                android:textSize="20dp"
+                android:gravity="center"
+                android:fontFamily="@font/opensansbold"
+                android:textColor="@color/colorBlack"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="5dp"
+            android:background="@drawable/shape_border"
+            android:layout_marginTop="40dp"
+            android:gravity="center">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:layout_alignParentTop="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/image_spa"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Spa"
+                android:textSize="20dp"
+                android:gravity="center"
+                android:fontFamily="@font/opensansbold"
+                android:textColor="@color/colorBlack"/>
+        </LinearLayout>
+
+    </LinearLayout>
 
     <include layout="@layout/layout_progressbar"/>
 

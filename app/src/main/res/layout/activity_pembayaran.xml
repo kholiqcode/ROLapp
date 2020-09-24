@@ -159,6 +159,7 @@
                 android:textColor="@color/colorWhite"
                 android:textStyle="bold"/>
             <TextView
+                android:id="@+id/tvKeterangan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Harap lakukan pembayaran sebelum jam 23.59 dan konfirmasi ke WA (089647583033)"

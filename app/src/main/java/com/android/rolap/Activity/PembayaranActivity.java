@@ -24,7 +24,7 @@ public class PembayaranActivity extends AppCompatActivity implements View.OnClic
     private Helper helper;
     private PrefManager prefmanager;
     private Button btnHome;
-    private TextView tvMetodePembayaran,tvNorek,tvTotalPembayaran;
+    private TextView tvMetodePembayaran,tvNorek,tvTotalPembayaran,tvKeterangan;
     private String strMetodePembayaran,strNorek,strTotalPembayaran;
 
     @Override
@@ -41,6 +41,7 @@ public class PembayaranActivity extends AppCompatActivity implements View.OnClic
         ivKembali = findViewById(R.id.ivBack);
         btnHome = findViewById(R.id.btnHome);
         tvTotalPembayaran = findViewById(R.id.tvTotalPembayaran);
+        tvKeterangan = findViewById(R.id.tvKeterangan);
 
         strMetodePembayaran = getIntent().getStringExtra("metode_pembayaran");
         strNorek = getIntent().getStringExtra("nomor_rekening");
@@ -49,6 +50,7 @@ public class PembayaranActivity extends AppCompatActivity implements View.OnClic
         tvMetodePembayaran.setText(strMetodePembayaran);
         tvNorek.setText(strNorek);
         tvTotalPembayaran.setText("Rp "+strTotalPembayaran);
+        tvKeterangan.setText("Harap lakukan pembayaran sebelum jam 23.59 dan konfirmasi ke WA ("+prefmanager.getNoWa()+")");
 
         btnHome.setOnClickListener(this);
         ivKembali.setOnClickListener(this);

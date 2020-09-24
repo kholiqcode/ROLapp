@@ -18,6 +18,7 @@ import com.android.rolap.Helper.Helper;
 import com.android.rolap.Helper.PrefManager;
 import com.android.rolap.R;
 import com.android.rolap.Rest.RequestAPI;
+import com.android.rolap.Rest.Response.ResponseAdmin;
 import com.android.rolap.Rest.Response.ResponseUsers;
 import com.android.rolap.Rest.RestApi;
 
@@ -31,6 +32,7 @@ public class SplashActivity extends AppCompatActivity {
     private PrefManager prefmanager;
     private Helper helper;
     private List<ResponseUsers.Data> dataUser;
+    private List<ResponseAdmin.Data> dataAdmin;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,6 +55,7 @@ public class SplashActivity extends AppCompatActivity {
             public void run() {
                 if (helper.isOnline()) {
                     getInfo();
+                    getInfoAdmin();
                     finish();
                 } else {
                     helper.showToast(getString(R.string.msgNoCennection));
@@ -63,8 +66,6 @@ public class SplashActivity extends AppCompatActivity {
                         startActivity(intent, options1.toBundle());
                     }
                 }
-//                Log.d("isFirstTime",""+prefmanager.isFirstTime());
-//                launchHomeScreen();
             }
         }, 3000);
     }
@@ -91,7 +92,6 @@ public class SplashActivity extends AppCompatActivity {
                         startActivity(intent, options1.toBundle());
                     }
                 } else {
-                    helper.showToast(getString(R.string.msgWrong));
                     Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                         ActivityOptions options1 = ActivityOptions.makeCustomAnimation(SplashActivity.this, R.anim.slide_in, R.anim.slide_out);
@@ -108,6 +108,26 @@ public class SplashActivity extends AppCompatActivity {
                     ActivityOptions options1 = ActivityOptions.makeCustomAnimation(SplashActivity.this, R.anim.slide_in, R.anim.slide_out);
                     startActivity(intent, options1.toBundle());
                 }
+                t.printStackTrace();
+            }
+        });
+    }
+
+    public void getInfoAdmin(){
+        RequestAPI rolapAPI = RestApi.createAPI();
+        Call<ResponseAdmin> call = rolapAPI.getInfo(prefmanager.getToken());
+        call.enqueue(new Callback<ResponseAdmin>() {
+            @Override
+            public void onResponse(Call<ResponseAdmin> call, Response<ResponseAdmin> response) {
+                if (response.isSuccessful()) {
+                    dataAdmin = response.body().data;
+                    prefmanager.setNoWa(dataAdmin.get(0).no_wa);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseAdmin> call, Throwable t) {
+                helper.showToast(getString(R.string.msgWrong));
                 t.printStackTrace();
             }
         });

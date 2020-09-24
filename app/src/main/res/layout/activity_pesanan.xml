@@ -246,6 +246,23 @@
                 android:textColor="@color/colorWhite"/>
         </LinearLayout>
 
+        <Button
+            android:id="@+id/btnBayar"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center"
+            android:elevation="3dp"
+            android:text="@string/bayar_sekarang"
+            android:clickable="true"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            android:textColor="@color/colorWhite"
+            android:background="@drawable/shape_rectangle_rounded_blue"
+            android:shadowColor="@color/colorWhiteGrey"
+            />
+
     </LinearLayout>
     <include layout="@layout/layout_progressbar" />
 </RelativeLayout>

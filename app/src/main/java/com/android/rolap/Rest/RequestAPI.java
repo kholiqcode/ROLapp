@@ -1,6 +1,7 @@
 package com.android.rolap.Rest;
 
 
+import com.android.rolap.Rest.Response.ResponseAdmin;
 import com.android.rolap.Rest.Response.ResponseBasic;
 import com.android.rolap.Rest.Response.ResponseDaftar;
 import com.android.rolap.Rest.Response.ResponseJadwal;
@@ -54,6 +55,9 @@ public interface RequestAPI {
 
     @GET(WEBSERVICE_PATH+WEBSERVICE_API_PATH+"users")
     Call<ResponseUsers> getUser(@Query("apikey") String apikey);
+
+    @GET(WEBSERVICE_PATH+WEBSERVICE_API_PATH+"info")
+    Call<ResponseAdmin> getInfo(@Query("apikey") String apikey);
 
     @GET(WEBSERVICE_PATH+WEBSERVICE_API_PATH+"kategori")
     Call<ResponseKategori> getKategori(@Query("apikey") String apikey);
@@ -124,6 +128,17 @@ public interface RequestAPI {
     @POST(WEBSERVICE_PATH+WEBSERVICE_API_PATH+"spa/delete")
     Call<ResponseBasic> deleteSpa(@Field("apikey") String apikey,
                                     @Field("sid") String sid);
+
+    @FormUrlEncoded
+    @POST(WEBSERVICE_PATH+WEBSERVICE_API_PATH+"rating")
+    Call<ResponseBasic> postRating(@Field("apikey") String apikey,
+                                  @Field("pid") String pid,
+                                   @Field("rate") String rate);
+
+    @FormUrlEncoded
+    @POST(WEBSERVICE_PATH+WEBSERVICE_API_PATH+"rating/check")
+    Call<ResponseBasic> checkRating(@Field("apikey") String apikey,
+                                   @Field("pid") String pid);
 
     @FormUrlEncoded
     @PUT(WEBSERVICE_PATH+WEBSERVICE_API_PATH+"users/ubah_password")

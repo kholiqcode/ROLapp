@@ -119,7 +119,10 @@ public class TutorFragment extends Fragment {
                     });
 
                 } else {
-                    helper.showToast(getString(R.string.msgWrong));
+//                    helper.showToast(getString(R.string.msgWrong));
+                    progressbar.setVisibility(View.GONE);
+                    tvNoData.setVisibility(View.VISIBLE);
+                    rvTutor.setVisibility(View.GONE);
                 }
             }
 

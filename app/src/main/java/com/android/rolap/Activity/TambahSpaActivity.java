@@ -8,6 +8,7 @@ import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
@@ -43,11 +44,13 @@ import com.android.rolap.Rest.RestApi;
 import com.bumptech.glide.Glide;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import id.zelory.compressor.Compressor;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -192,6 +195,17 @@ public class TambahSpaActivity extends AppCompatActivity implements View.OnClick
         }
     }
 
+    private String getRealPathFromURI(Uri contentURI) {
+        Cursor cursor = getContentResolver().query(contentURI, null, null, null, null);
+        if (cursor == null) {
+            return contentURI.getPath();
+        } else {
+            cursor.moveToFirst();
+            int idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
+            return cursor.getString(idx);
+        }
+    }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -202,15 +216,6 @@ public class TambahSpaActivity extends AppCompatActivity implements View.OnClick
                         Glide.with(this)
                                 .load(mImageUri)
                                 .into(civSpa);
-                        try {
-                            this.bitmap =  MediaStore.Images.Media.getBitmap(getContentResolver(),mImageUri);
-                            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-                            byte[] imageBytes = baos.toByteArray();
-                            strFoto = Base64.encodeToString(imageBytes, Base64.DEFAULT);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
                     } else {
                         helper.showToast(R.string.msgNoCennection);
                     }
@@ -223,20 +228,18 @@ public class TambahSpaActivity extends AppCompatActivity implements View.OnClick
                             Glide.with(this)
                                     .load(mImageUri)
                                     .into(civSpa);
-                            try {
-                                this.bitmap =  MediaStore.Images.Media.getBitmap(getContentResolver(),mImageUri);
-                                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-                                byte[] imageBytes = baos.toByteArray();
-                                strFoto = Base64.encodeToString(imageBytes, Base64.DEFAULT);
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
                         }
                     } else {
                         helper.showToast(R.string.msgNoCennection);
                     }
                     break;
+            }
+            File file = new File(getRealPathFromURI(mImageUri));
+            try {
+                Bitmap compressedImageBitmap = new Compressor(this).compressToBitmap(file);
+                strFoto = helper.bitmapToBase64(compressedImageBitmap);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
 

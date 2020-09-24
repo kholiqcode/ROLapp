@@ -17,9 +17,10 @@ public class ResponseOrder {
         public String jenis_kelamin;
         public String alamat;
         public int total_trx;
-        public int rate_avg;
+        public float rate_avg;
         public int total_rate;
         public String metode_pembayaran;
+        public String nomor_rekening;
         public String tanggal;
         public String waktu;
         public String status;

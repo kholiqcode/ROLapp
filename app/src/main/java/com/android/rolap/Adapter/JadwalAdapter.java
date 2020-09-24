@@ -60,7 +60,7 @@ public class JadwalAdapter extends RecyclerView.Adapter {
         if(jadwalList.get(position).foto == ""){
             Glide.with(mContext).load(R.drawable.image_profil).into(holder.civJadwal);
         }else{
-            Glide.with(mContext).load(Constant.WEBSERVICE_IMAGE+"tutor/"+jadwalList.get(position).foto).into(holder.civJadwal);
+            Glide.with(mContext).load(Constant.IMAGE_KATALOG+jadwalList.get(position).foto).into(holder.civJadwal);
         }
     }
 

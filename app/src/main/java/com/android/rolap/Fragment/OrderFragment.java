@@ -100,11 +100,14 @@ public class OrderFragment extends Fragment {
                         @Override
                         public void onDetailClick(int position) {
                             Intent intent = new Intent(getActivity(), DetailPemesananActivity.class);
+                            intent.putExtra("pid", orderList.get(position).id);
                             intent.putExtra("nama", orderList.get(position).nama);
                             intent.putExtra("alamat", orderList.get(position).alamat);
                             intent.putExtra("jenis_kelamin", orderList.get(position).jenis_kelamin);
                             intent.putExtra("telepon", orderList.get(position).telepon);
                             intent.putExtra("tanggal", orderList.get(position).tanggal);
+                            intent.putExtra("metode_pembayaran", orderList.get(position).metode_pembayaran);
+                            intent.putExtra("nomor_rekening", orderList.get(position).nomor_rekening);
                             intent.putExtra("jam", orderList.get(position).waktu);
                             intent.putExtra("total", orderList.get(position).total);
                             intent.putExtra("status", orderList.get(position).status);
@@ -115,7 +118,10 @@ public class OrderFragment extends Fragment {
                     });
 
                 } else {
-                    helper.showToast(getString(R.string.msgWrong));
+//                    helper.showToast(getString(R.string.msgWrong));
+                    progressbar.setVisibility(View.GONE);
+                    tvNoData.setVisibility(View.VISIBLE);
+                    rvOrder.setVisibility(View.GONE);
                 }
             }
 

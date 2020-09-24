@@ -85,7 +85,7 @@ public class UbahProfilActivity extends AppCompatActivity implements View.OnClic
     private CircleImageView civUsers;
     private String strNama,strEmail,strJenisKelamin,strTelepon,strAlamat,strFileName,strImage = "";
     private List<ResponseUsers.Data> dataUser;
-    private Uri mImageUri;
+    private Uri mImageUri = null;
     private Bitmap bitmap;
 
     @Override
@@ -356,18 +356,23 @@ public class UbahProfilActivity extends AppCompatActivity implements View.OnClic
         RequestBody rbAlamat = RequestBody.create(strAlamat,MediaType.parse("text/plain"));
         RequestBody rbTelepon = RequestBody.create(strTelepon,MediaType.parse("text/plain"));
         RequestBody rbJenisKelamin = RequestBody.create(strJenisKelamin,MediaType.parse("text/plain"));
-        File file = new File(getRealPathFromURI(mImageUri));
-//        strFileName = file.getName();
+        if(mImageUri != null){
+            File file = new File(getRealPathFromURI(mImageUri));
+            strFileName = file.getName();
 //        strImage = helper.getFileToByte(mImageUri);
-        try {
-            Bitmap compressedImageBitmap = new Compressor(this).compressToBitmap(file);
-            strImage = helper.bitmapToBase64(compressedImageBitmap);
-        } catch (IOException e) {
-            e.printStackTrace();
+            try {
+                Bitmap compressedImageBitmap = new Compressor(this).compressToBitmap(file);
+                strImage = helper.bitmapToBase64(compressedImageBitmap);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-        RequestBody strImages = RequestBody.create(strImage,MediaType.parse("text/plain"));
+        RequestBody strImages = RequestBody.create("",MediaType.parse("text/plain"));
+        if (Validate.isNotNull(strFileName)) {
+            strImages = RequestBody.create(strImage,MediaType.parse("text/plain"));
+        }
 //        MultipartBody.Part strImages = MultipartBody.Part.createFormData("foto",strFileName,requestBody);
-        
+
         RequestAPI rolapAPI = RestApi.createAPI();
         Call<ResponseProfil> call = rolapAPI.putUsers(rbToken,rbNama,rbAlamat,rbJenisKelamin,rbTelepon,strImages);
         call.enqueue(new Callback<ResponseProfil>() {

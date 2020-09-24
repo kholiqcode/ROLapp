@@ -70,7 +70,7 @@ public class TutorSayaAdapter extends RecyclerView.Adapter {
         if(tutorsayaList.get(position).foto == ""){
             Glide.with(mContext).load(R.drawable.image_profil).into(holder.civTutor);
         }else{
-            Glide.with(mContext).load(Constant.WEBSERVICE_IMAGE+"tutor/"+tutorsayaList.get(position).foto).into(holder.civTutor);
+            Glide.with(mContext).load(Constant.IMAGE_KATALOG+tutorsayaList.get(position).foto).into(holder.civTutor);
         }
     }
 

@@ -55,4 +55,12 @@
     <string name="hint_harga_spa">Masukkan harga spa anda</string>
     <string name="hint_alamat_tutor">Masukkan alamat tutor anda</string>
     <string name="hint_harga_tutor">Masukkan harga tutor</string>
+    <string name="slide_1_title">Tutor</string>
+    <string name="slide_1_desc">Cari tutor yang cocok untuk anda dan mulai belajar dengan mudah.</string>
+    <string name="slide_2_title">Spa</string>
+    <string name="slide_2_desc">Cari spa dengan mudah dan jalani terapi dengan nyaman</string>
+    <string name="slide_3_title">Pembayaran</string>
+    <string name="slide_3_desc">Lakukan pembayaran dengan sekali klik</string>
+    <string name="bayar_sekarang">Bayar Sekarang</string>
+    <string name="selesai">Selesai</string>
 </resources>

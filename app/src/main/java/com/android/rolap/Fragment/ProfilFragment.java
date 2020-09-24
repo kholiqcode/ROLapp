@@ -1,6 +1,8 @@
 package com.android.rolap.Fragment;
 
 import android.app.ActivityOptions;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -18,9 +20,13 @@ import com.android.rolap.Activity.LoginActivity;
 import com.android.rolap.Activity.SpaActivity;
 import com.android.rolap.Activity.TutorActivity;
 import com.android.rolap.Activity.UbahProfilActivity;
+import com.android.rolap.Helper.Constant;
 import com.android.rolap.Helper.Helper;
 import com.android.rolap.Helper.PrefManager;
 import com.android.rolap.R;
+import com.bumptech.glide.Glide;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ProfilFragment extends Fragment implements View.OnClickListener{
 
@@ -30,6 +36,7 @@ public class ProfilFragment extends Fragment implements View.OnClickListener{
     private RelativeLayout progressbar;
     private TextView tvNamaUser;
     private RelativeLayout rlUbahProfil,rlSpa,rlTutor,rlJadwal,rlLogout;
+    private CircleImageView civUsers;
 
     @Nullable
     @Override
@@ -45,8 +52,14 @@ public class ProfilFragment extends Fragment implements View.OnClickListener{
         rlTutor = view.findViewById(R.id.rlTutor);
         rlJadwal = view.findViewById(R.id.rlJadwal);
         rlLogout = view.findViewById(R.id.rlLogout);
+        civUsers = view.findViewById(R.id.civProfil);
 
         tvNamaUser.setText(prefmanager.getNama());
+        if(prefmanager.getFoto() == ""){
+            Glide.with(this).load(R.drawable.image_profil).into(civUsers);
+        }else{
+            Glide.with(this).load(Constant.IMAGE_USERS+prefmanager.getFoto()).into(civUsers);
+        }
 
         rlUbahProfil.setOnClickListener(this);
         rlSpa.setOnClickListener(this);
@@ -89,16 +102,27 @@ public class ProfilFragment extends Fragment implements View.OnClickListener{
                 }
                 break;
             case R.id.rlLogout:
-                prefmanager.setToken("");
-                Intent intent4 = new Intent(getActivity(), LoginActivity.class);
-                ActivityOptions options4 =
-                        null;
-                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN) {
-                    options4 = ActivityOptions.makeCustomAnimation(getActivity(), R.anim.slide_in, R.anim.slide_out);
-                    startActivity(intent4, options4.toBundle());
-                }
-                helper.showToast("Anda berhasil logout");
-                getActivity().finish();
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setMessage("Apakah anda yakin ingin logout?")
+                        .setCancelable(false)
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                prefmanager.setToken("");
+                                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                ActivityOptions options =
+                                        ActivityOptions.makeCustomAnimation(getActivity(), R.anim.slide_in, R.anim.slide_out);
+                                startActivity(intent, options.toBundle());
+                                helper.showToast("Anda berhasil logout");
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+                AlertDialog alert = builder.create();
+                alert.show();
                 break;
 
             case R.id.rlJadwal:

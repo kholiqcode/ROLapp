@@ -104,7 +104,7 @@ public class DetailTutorActivity extends AppCompatActivity implements View.OnCli
         if(strFoto == ""){
             Glide.with(getApplicationContext()).load(R.drawable.image_profil).into(civTutor);
         }else{
-            Glide.with(getApplicationContext()).load(Constant.WEBSERVICE_IMAGE+"tutor/"+strFoto).into(civTutor);
+            Glide.with(getApplicationContext()).load(Constant.IMAGE_KATALOG+strFoto).into(civTutor);
         }
 
         btnPesan.setOnClickListener(this);

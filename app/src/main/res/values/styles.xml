@@ -13,4 +13,13 @@
 
     <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar"/>
     <color name="colorGrey">#C7C7C7</color>
+
+    <style name="CustomDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowAnimationStyle">@style/CustomDialogAnimation</item>
+    </style>
+
+    <style name="CustomDialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/translate_left_side</item>
+        <item name="android:windowExitAnimation">@anim/translate_right_side</item>
+    </style>
 </resources>

@@ -100,7 +100,10 @@ public class KategoriFragment extends Fragment {
                     });
 
                 } else {
-                    helper.showToast(getString(R.string.msgWrong));
+//                    helper.showToast(getString(R.string.msgWrong));
+                    progressbar.setVisibility(View.GONE);
+                    tvNoData.setVisibility(View.VISIBLE);
+                    rvKategori.setVisibility(View.GONE);
                 }
             }
 

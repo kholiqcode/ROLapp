@@ -27,6 +27,7 @@ public class PrefManager {
         pref = PreferenceManager.getDefaultSharedPreferences(context);
         refreshToken();
         refreshNama();
+        refreshNoWa();
         refreshEmail();
         refreshAlamat();
         refreshGender();
@@ -41,6 +42,7 @@ public class PrefManager {
 
     private final String TOKEN = "TOKEN";
     private final String NAMA_USER = "NAMA_USER";
+    private final String NO_WA = "NO_WA";
     private final String EMAIL_USER = "EMAIL_USER";
     private final String GENDER_USER = "GENDER_USER";
     private final String TELEPON_USER = "TELEPON_USER";
@@ -51,6 +53,8 @@ public class PrefManager {
     private String token;
     @Nullable
     private String nama;
+    @Nullable
+    private String nowa;
     @Nullable
     private String email;
     @Nullable
@@ -92,6 +96,22 @@ public class PrefManager {
         this.nama = nama;
         SharedPreferences.Editor editor = pref.edit();
         editor.putString(NAMA_USER, nama);
+        editor.apply();
+    }
+
+    private void refreshNoWa() {
+        nowa = pref.getString(NO_WA, "");
+    }
+
+    @Nullable
+    public String getNoWa() {
+        return nowa;
+    }
+
+    public void setNoWa(@Nullable String nowa) {
+        this.nowa = nowa;
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putString(NO_WA, nowa);
         editor.apply();
     }
 
