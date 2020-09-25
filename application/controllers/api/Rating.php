@@ -52,13 +52,31 @@ class Rating extends RestController {
             [
                 'field'    => 'rate',
                 'label'    => 'Rating',
-                'rules'    => 'trim|required|integer'
+                'rules'    => 'trim|required'
             ]
         ];
 
         $res = validateReq($validationRules);
 
         return $res;
+    }
+
+    public function check_post(){
+        $input     = $this->input->post(null, true);
+
+        $res = $this->rating->getStatus($input);
+
+        if ($res) {
+            $this->response([
+                'status' => true,
+                'message' => 'Anda sudah memberikan penilaian'
+            ], 200);
+        } else {
+            $this->response([
+                'status' => false,
+                'message' => 'Belum ada penilaian'
+            ], 200);
+        }
     }
 
 }

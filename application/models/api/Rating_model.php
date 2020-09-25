@@ -20,14 +20,14 @@ class Rating_model extends CI_Model
             return false;
         }
 
-        if ($this->db->where('id', $input['pid'])->count_all_results('pemesanan') == 0) {
+        if ($this->db->where('id', $input['pid'])->where('id_users', $uid)->count_all_results('pemesanan') == 0) {
             return false;
         }
 
         $this->db->insert($this->table, $data);
         $query = $this->db->insert_id();
 
-        $tid = $this->getTID($input['pid']);
+        $tid = $this->getTID($uid,$input['pid']);
 
         $dataTutor        = [
             'total_rate'        => $this->sumRating($tid),
@@ -57,13 +57,28 @@ class Rating_model extends CI_Model
         return $query['rate'];
     }
 
-    public function getTID($pid)
+    public function getTID($uid,$pid)
     {
-        $this->db->select('id_tutor')->where('id', $pid);
+        $this->db->select('id_tutor')->where('id', $pid)->where('id_users', $uid);
 
         $query = $this->db->get('pemesanan')->row_array();
 
         return $query['id_tutor'];
+    }
+
+    public function getStatus($input)
+    {
+        $uid = $this->token->decrypt($input['apikey']);
+
+        if($this->db->where('pemesanan.id', $input['pid'])->where('pemesanan.id_users', $uid)->where('pemesanan.status', 3)->count_all_results('pemesanan') > 0){
+            if ($this->db->where('pemesanan.id', $input['pid'])->where('pemesanan.id_users', $uid)->join('pemesanan','pemesanan.id=rating.id_pemesanan')->count_all_results($this->table) > 0) {
+                return true; //sudah menilai
+            }else{
+                return false;
+            }
+        }else{
+            return true;
+        }
     }
 }
 

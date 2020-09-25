@@ -44,12 +44,12 @@ class Kategori extends CI_Controller {
             $input    = $this->input->post(null, true);
         }
 
-        if (!empty($_FILES) && $_FILES['foto_kategori']['name'] !== '') {
-            $imageName    = url_title($input['nama_kategori'], '-', true) . '-' . date('YmdHis');
-            $upload        = $this->kategori->upload_image('foto_kategori', $imageName);
+        if (!empty($_FILES) && $_FILES['foto']['name'] !== '') {
+            $imageName    = url_title($input['nama'], '-', true) . '-' . date('YmdHis');
+            $upload        = $this->kategori->upload_image('foto', $imageName);
             if ($upload) {
                 $data = [
-                    'nama' => $input['nama_kategori'],
+                    'nama' => $input['nama'],
                     'foto' => $upload['file_name'],
                 ];
             } else {
@@ -66,7 +66,7 @@ class Kategori extends CI_Controller {
             // $this->load->view('admin/tambah_kandidat', $input);
             $res = [
                 'status' => false,
-                'message' => 'Oops! Terjadi suatu kesalahan saat validasi'
+                'message' => 'Oops! Terjadi suatu kesalahan saat validasi'.validation_errors(null, null)
             ];
             echo json_encode($res);
             return;

@@ -277,6 +277,50 @@
             return false;
         });
 
+        $('#authentication-form-2').submit(function () {
+            $.ajax({
+                type: "POST",
+                url: $(this).attr('action'),
+                dataType: 'json',
+                data: new FormData(this),
+                processData: false,
+                contentType: false,
+                success: function (res) {
+                    if (res.status == false) {
+                        swal(
+                            {
+                                title: 'Gagal!',
+                                text: res.message,
+                                type: 'error',
+                                confirmButtonClass: 'btn btn-success'
+                            }
+                        );
+                    } else {
+                        swal(
+                            {
+                                title: 'Berhasil!',
+                                text: res.message,
+                                type: 'success',
+                                confirmButtonClass: 'btn btn-success'
+                            }
+                        ).then(function () {
+                            location.reload();
+                        });
+                    }
+                },
+                error: function () {
+                    Swal.fire({
+                        type: 'error',
+                        title: 'Oops...',
+                        text: 'Oops! Terjadi suatu kesalahan.',
+                        timer: 2000
+                        // footer: '<a href>Why do I have this issue?</a>'
+                    })
+                }
+            });
+            return false;
+        });
+
         $('.pilih').on('click', function(e) {
             e.preventDefault();
             const href = $(this).attr('href');

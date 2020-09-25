@@ -21,11 +21,6 @@
                 <div class="card m-b-30">
                     <div class="card-body">
 
-                        <h4 class="mt-0 header-title">Validation type</h4>
-                        <p class="sub-title">Parsley is a javascript form validation
-                            library. It helps you provide your users with feedback on their form
-                            submission before sending it to your server.</p>
-
                         <?= form_open_multipart(base_url('admin/tutor/edit/' . $content['id']), ['method' => 'POST', 'id' => 'authentication-form']) ?>
 
                         <div class="form-group">
@@ -88,11 +83,8 @@
                                 <div class="card">
                                     <div class="card-body pb-0">
                                         <div class="text-center mt-3">
-                                            <img src="<?= empty($content['foto'])? base_url('assets/images/users/user-6.jpg'):base_url('public/images/tutor/'.$content['foto']) ?>" alt="" id="image-preview" class="avatar-xl rounded-circle" width="200px" />
-                                            <h5 class="mt-2 mb-0" id="name-preview">Donny Pratama</h5>
-                                            <h6 class="text-muted font-weight-normal mt-2 mb-4" id="prodi-preview">Teknik
-                                                Informatika
-                                            </h6>
+                                            <img src="<?= empty($content['foto'])? base_url('assets/images/users/user-6.jpg'):base_url('public/images/katalog/'.$content['foto']) ?>" alt="" id="image-preview" class="avatar-xl rounded-circle" width="200px" />
+                                            <h5 class="mt-2 mb-0" id="name-preview"><?= $content['nama'] ?></h5>
                                         </div>
                                     </div>
                                 </div>

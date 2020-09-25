@@ -37,6 +37,7 @@ class Login extends CI_Controller
         if (!empty($query) && $input['password'] == $query['password']) {
             $sess_data = [
                 'id_admin'        => $query['id'],
+                'username'        => $query['username'],
                 'nama_admin'        => $query['nama'],
                 'is_login'    => true,
             ];

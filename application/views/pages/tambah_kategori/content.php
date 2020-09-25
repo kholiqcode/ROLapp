@@ -26,14 +26,14 @@
                         <div class="form-group">
                             <label>Nama Kategori</label>
                             <div>
-                                <?= form_input(['type' => 'text', 'name' => 'nama_kategori', 'class' => 'form-control', 'id' => 'nama-kategori', 'placeholder' => 'Masukkan nama kategori', 'required' => true]) ?>
+                                <?= form_input(['type' => 'text', 'name' => 'nama', 'class' => 'form-control', 'id' => 'nama-kategori', 'placeholder' => 'Masukkan nama kategori', 'required' => true]) ?>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label>Foto</label>
                             <div>
-                                <?= form_upload(['name' => 'foto_kategori', 'class' => 'form-control', 'id' => 'image-upload', 'placeholder' => 'Upload foto tutor', 'required' => true]) ?>
+                                <?= form_upload(['name' => 'foto', 'class' => 'form-control', 'id' => 'image-upload', 'placeholder' => 'Upload foto tutor', 'required' => true]) ?>
                             </div>
                         </div>
 

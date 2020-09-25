@@ -32,7 +32,7 @@
 
             <div class="card-body">
                 <div class="text-center m-t-0 m-b-15">
-                    <a href="<?= base_url('admin') ?>" class="logo logo-admin"><img src="<?= base_url('assets/images/logo-dark.png') ?>" alt="" height="24"></a>
+                    <a href="<?= base_url('admin') ?>" class="logo logo-admin"><img src="<?= base_url('assets/images/logo-rolap.png') ?>" alt="" height="24"></a>
                 </div>
                 <h5 class="font-18 text-center">Masuk untuk melanjutkan ke Admin Panel.</h5>
                 <?= form_open(base_url('admin/login'), ['method' => 'POST', 'id' => 'authentication-form', 'class' => 'form-horizontal m-t-30']) ?>
