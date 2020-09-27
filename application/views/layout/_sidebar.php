@@ -33,6 +33,15 @@
 
                 <li>
                     <a href="javascript:void(0);" class="waves-effect"><i class="icon-spread"></i><span>
+                            Spa <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
+                    <ul class="submenu">
+                        <li><a href="<?= base_url('admin/spa') ?>">Daftar Spa</a></li>
+                        <li><a href="<?= base_url('admin/spa/tambah') ?>">Tambah Spa</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript:void(0);" class="waves-effect"><i class="icon-spread"></i><span>
                             Pengguna <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
                     <ul class="submenu">
                         <li><a href="<?= base_url('admin/pengguna') ?>">Daftar Pengguna</a></li>

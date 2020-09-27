@@ -43,11 +43,23 @@ class Spa_model extends CI_Model
     {
         $uid = $this->token->decrypt($input['apikey']);
 
-        $data        = [
-            'nama'        => $input['nama'],
-            'alamat'    => $input['alamat'],
-            'harga'        => $input['harga'],
-        ];
+        if (!empty($input['foto'])) {
+            $foto =  base64_decode($input['foto']);
+
+            $imageName = url_title($uid, '-', true) . date('YmdHis') . '.jpg';
+
+            $success = file_put_contents('./public/images/katalog/' . url_title($uid, '-', true) . date('YmdHis') . '.jpg', $foto);
+
+            if ($success) {
+                $data['foto'] = $imageName;
+            } else {
+                return false;
+            }
+        }
+
+        $data['nama'] = $input['nama'];
+        $data['alamat'] = $input['alamat'];
+        $data['harga'] = $input['harga'];
 
         $this->db->where('id_users', $uid)->where('id', $input['sid'])->update($this->table, $data);
 
@@ -86,6 +98,16 @@ class Spa_model extends CI_Model
         } else {
             $query    = $this->db->select('tutor.*,users.telepon,users.jenis_kelamin')->where('tutor.id_users', $uid)->where('tutor.role', 1)->join('users', 'tutor.id_users=users.id')->get($this->table)->result_array();
         }
+
+        return $query;
+    }
+
+    public function getInfoSpa($input = null)
+    {
+
+        $uid = $this->token->decrypt($input['apikey']);
+
+        $query    = $this->db->select_sum('pemesanan.total')->where('tutor.id_users', $uid)->where('tutor.role', 1)->join('pemesanan', 'tutor.id=pemesanan.id_tutor')->get($this->table)->result_array();
 
         return $query;
     }

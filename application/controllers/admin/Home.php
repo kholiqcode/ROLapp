@@ -40,6 +40,12 @@ class Home extends CI_Controller
         $this->load->view('layout/app', $data);
     }
 
+
+    public function logout(){
+        $this->session->sess_destroy();
+        redirect(base_url('admin/login'));
+    }
+
     // public function chart()
     // {
     //     $total_dpt = $this->home->total_dpt();

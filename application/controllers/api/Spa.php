@@ -202,6 +202,26 @@ class Spa extends RestController
 
         return $res;
     }
+
+    public function info_get()
+    {
+        $input     = $this->input->get(null, true);
+
+        $res = $this->spa->getInfoSpa($input);
+
+        if ($res) {
+            $this->response([
+                'status' => true,
+                'data' => $res,
+                'message' => 'Berhasil mendapatkan info spa'
+            ], 200);
+        } else {
+            $this->response([
+                'status' => false,
+                'message' => 'Data tidak ditemukan'
+            ], 400);
+        }
+    }
 }
 
 /* End of file Tutor.php */

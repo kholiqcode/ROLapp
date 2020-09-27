@@ -87,9 +87,8 @@
                                     <div class="card-body pb-0">
                                         <div class="text-center mt-3">
                                             <img src="<?= base_url('assets/images/users/user-6.jpg') ?>" alt="" id="image-preview" class="avatar-xl rounded-circle" width="200px" />
-                                            <h5 class="mt-2 mb-0" id="name-preview">Donny Pratama</h5>
-                                            <h6 class="text-muted font-weight-normal mt-2 mb-4" id="prodi-preview">Teknik
-                                                Informatika
+                                            <h5 class="mt-2 mb-0" id="name-preview"></h5>
+                                            <h6 class="text-muted font-weight-normal mt-2 mb-4" id="prodi-preview">
                                             </h6>
                                         </div>
                                     </div>

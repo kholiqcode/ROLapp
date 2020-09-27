@@ -45,6 +45,13 @@ class Pemesanan extends RestController {
             ], 400);
         }
 
+        if(!$this->pemesanan->validateUsers($data)){
+            $this->response([
+                'status' => false,
+                'message' => 'Tidak dapat memesan tutor anda'
+            ], 200);
+        }
+
         $res = $this->pemesanan->addPesanan($data);
         
         if ($res) {
@@ -107,6 +114,51 @@ class Pemesanan extends RestController {
         ];
 
         $res = validateReq($validationRules);
+
+        return $res;
+    }
+
+    public function status_put()
+    {
+        $input = $this->put();
+
+        
+        if (!$this->validatePutStatus($input)) {
+            $this->response([
+                'status' => false,
+                'message' => validation_errors(null, null)
+            ], 404);
+        }
+
+        if ($this->pemesanan->putStatus($input) > 0) {
+            $this->response([
+                'status' => true,
+                'message' => 'Status berhasil diperbarui'
+            ], 200);
+        } else {
+            $this->response([
+                'status' => false,
+                'message' => 'Terjadi kesalahan'
+            ], 404);
+        }
+    }
+
+    public function validatePutStatus($input)
+    {
+        $validationRules = [
+            [
+                'field'    => 'pid',
+                'label'    => 'Pemesanan Id',
+                'rules'    => 'trim|required|integer'
+            ],
+            [
+                'field'     => 'status',
+                'label'        => 'Status',
+                'rules'        => 'trim|required'
+            ]
+        ];
+
+        $res = validateReq($validationRules, $input);
 
         return $res;
     }

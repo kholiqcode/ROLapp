@@ -41,7 +41,7 @@ class Users extends RestController {
             $this->response([
                 'status' => false,
                 'message' => validation_errors(null, null)
-            ], 404);
+            ], 200);
         }
 
         if ($this->user->putUsers($input) > 0) {

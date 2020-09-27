@@ -14,9 +14,9 @@ class Tutor_model extends CI_Model
 
         $foto =  base64_decode($input['foto']);
 
-        $imageName = url_title($uid, '-', true) . date('YmdHis').'.jpg';
+        $imageName = url_title($uid, '-', true) . date('YmdHis') . '.jpg';
 
-        $success = file_put_contents('./public/images/katalog/'.url_title($uid, '-', true) . date('YmdHis').'.jpg',$foto);
+        $success = file_put_contents('./public/images/katalog/' . url_title($uid, '-', true) . date('YmdHis') . '.jpg', $foto);
 
         if ($success) {
             $data        = [
@@ -31,11 +31,10 @@ class Tutor_model extends CI_Model
                 'role'        => 0,
                 'foto'      => $imageName
             ];
-    
         } else {
             return false;
         }
-        
+
         $this->db->insert($this->table, $data);
         return $this->db->insert_id();
     }
@@ -44,11 +43,23 @@ class Tutor_model extends CI_Model
     {
         $uid = $this->token->decrypt($input['apikey']);
 
-        $data        = [
-            'nama'        => $input['nama'],
-            'alamat'    => $input['alamat'],
-            'harga'        => $input['harga'],
-        ];
+        if (!empty($input['foto'])) {
+            $foto =  base64_decode($input['foto']);
+
+            $imageName = url_title($uid, '-', true) . date('YmdHis') . '.jpg';
+
+            $success = file_put_contents('./public/images/katalog/' . url_title($uid, '-', true) . date('YmdHis') . '.jpg', $foto);
+
+            if ($success) {
+                $data['foto'] = $imageName;
+            } else {
+                return false;
+            }
+        }
+
+        $data['nama'] = $input['nama'];
+        $data['alamat'] = $input['alamat'];
+        $data['harga'] = $input['harga'];
 
         $this->db->where('id_users', $uid)->where('id', $input['tid'])->update($this->table, $data);
 
@@ -91,6 +102,15 @@ class Tutor_model extends CI_Model
         return $query;
     }
 
+    public function getInfoTutor($input = null)
+    {
+
+        $uid = $this->token->decrypt($input['apikey']);
+
+        $query    = $this->db->select_sum('pemesanan.total')->where('tutor.id_users', $uid)->where('tutor.role', 0)->join('pemesanan', 'tutor.id=pemesanan.id_tutor')->get($this->table)->result_array();
+
+        return $query;
+    }
 }
 
 /* End of file Tutor_model.php */

@@ -38,7 +38,7 @@ class Login extends RestController {
             $this->response([
                 'status' => false,
                 'message' => 'Email atau password anda salah'
-            ], 400);
+            ], 200);
         }
     }
 

@@ -54,6 +54,18 @@ class Pemesanan_model extends CI_Model
         return $query;
     }
 
+    public function validateUsers($input)
+    {
+
+        $uid = $this->token->decrypt($input['apikey']);
+
+        $query = $this->db->where('id_users',$uid)->where('id',$input['tid'])->get('tutor');
+
+        if($query->num_rows() > 0) return false;
+
+        return true;
+    }
+
     public function getHarga($tid)
     {
         $query = $this->db->select('harga')->where('tutor.id', $tid)->get('tutor')->row_array();
@@ -75,6 +87,17 @@ class Pemesanan_model extends CI_Model
         }
 
         return $query;
+    }
+
+    public function putStatus($input = null)
+    {
+        $uid = $this->token->decrypt($input['apikey']);
+
+        $data['status'] = $input['status'];
+
+        $this->db->where('id', $input['pid'])->update($this->table, $data);
+
+        return $this->db->affected_rows();
     }
     
 }
