@@ -30,7 +30,7 @@
                     <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                         <!-- item-->
                         <a class="dropdown-item" href="<?= base_url('admin/profil') ?>"><i class="mdi mdi-account-circle"></i> Profile</a>
-                        <a class="dropdown-item d-block" href="#"><i class="mdi mdi-settings"></i> Pengaturan</a>
+                        <a class="dropdown-item d-block" href="<?= base_url('admin/pengaturan') ?>"><i class="mdi mdi-settings"></i> Pengaturan</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item text-danger" href="<?= base_url('admin/logout') ?>"><i class="mdi mdi-power text-danger"></i>
                             Logout</a>

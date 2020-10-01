@@ -42,7 +42,7 @@
             <!-- content -->
 
             <footer class="footer">
-                © <?= date('Y') ?> EVOTING <span class="d-none d-sm-inline-block"> - Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesdesign</span>.
+                © <?= date('Y') ?> ROLAP <span class="d-none d-sm-inline-block"> - Dikembangkan dengan <i class="mdi mdi-heart text-danger"></i> by ROLap</span>.
             </footer>
 
         </div>
